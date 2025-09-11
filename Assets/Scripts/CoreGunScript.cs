@@ -3,17 +3,21 @@ using UnityEngine;
 
 public class CoreGunScript : MonoBehaviour
 {
-    public UnityEvent OnGunShoot;
-    public float FireCoolDown;
+    public UnityEvent OnGunShoot; //creates OnGunShoot UnityEvent
+    public float FireCoolDown; //creates FireCoolDown float
 
-    public bool Automatic;
+    public bool Automatic; //creates Automatic bool
 
-    private float CurrentCooldown;
+    private float CurrentCooldown; //creates CurrentCoolDown float
+
+    public Animator anim; //creates anim Animator
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         CurrentCooldown = FireCoolDown;
+
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -39,6 +43,8 @@ public class CoreGunScript : MonoBehaviour
                     OnGunShoot?.Invoke();
                     CurrentCooldown = FireCoolDown;
                 }
+
+                anim.SetTrigger("PlayAnimation");
             }
         }
 
