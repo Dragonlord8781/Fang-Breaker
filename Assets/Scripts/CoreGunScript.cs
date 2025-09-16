@@ -31,12 +31,21 @@ public class CoreGunScript : MonoBehaviour
     {
         isReloading = true;
         Invoke("ReloadCompleted", reloadTime);
+        anim.SetTrigger("PlayReload");
+        Debug.Log("Gun is Reloading");
     }
 
     void ReloadCompleted()
     {
         bulletsLeft = magazineSize;
         isReloading = false;
+        anim.SetTrigger("PlayFull");
+    }
+
+    void Empty()
+    {
+        anim.SetTrigger("PlayEmpty");
+        Debug.Log("Gun is Empty");
     }
 
     // Update is called once per frame
@@ -71,13 +80,13 @@ public class CoreGunScript : MonoBehaviour
                         bulletsLeft--;
                     }
 
-                    anim.SetTrigger("PlayAnimation");
+                    anim.SetTrigger("PlayShoot");
                 }
             }
         }
-        else
+        else if (bulletsLeft < 1 && !isReloading) 
         {
-          
+            Empty();
         }
         CurrentCooldown -= Time.deltaTime;
     }
