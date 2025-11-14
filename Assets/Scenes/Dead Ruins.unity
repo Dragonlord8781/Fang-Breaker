@@ -127169,7 +127169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2d0f1a910e698de448d3976d9407ae1e, type: 3}
       propertyPath: m_Name
-      value: Quick-Sliver_V.1_Cocked
+      value: Quick-Sliver_V.1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2d0f1a910e698de448d3976d9407ae1e, type: 3}
       propertyPath: m_IsActive
