@@ -1,5 +1,7 @@
 using UnityEngine.Events;
 using UnityEngine;
+using Unity.VisualScripting;
+using System.Collections;
 
 public class CoreGunScript : MonoBehaviour
 {
@@ -16,6 +18,13 @@ public class CoreGunScript : MonoBehaviour
     public int magazineSize, bulletsLeft;
     public bool isReloading;
 
+    public GameObject thisGun;
+    public GameObject nextGun;
+
+    public float delayTime;
+
+    private bool isEmpty;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -25,6 +34,10 @@ public class CoreGunScript : MonoBehaviour
         anim = GetComponent<Animator>();
 
         bulletsLeft = magazineSize;
+
+        anim.SetTrigger("PlayUnhoister");
+
+        isEmpty = false;
     }
 
     void Reload()
@@ -39,6 +52,7 @@ public class CoreGunScript : MonoBehaviour
     {
         bulletsLeft = magazineSize;
         isReloading = false;
+        isEmpty = false;
         anim.SetTrigger("PlayFull");
     }
 
@@ -46,6 +60,23 @@ public class CoreGunScript : MonoBehaviour
     {
         anim.SetTrigger("PlayEmpty");
         Debug.Log("Gun is Empty");
+        isEmpty = true;
+    }
+
+    void SwitchGun()
+    {
+        anim.SetTrigger("PlayHoister");
+
+        StartCoroutine(DelayedActionCoroutine());
+    }
+
+    private IEnumerator DelayedActionCoroutine()
+    {
+        yield return new WaitForSeconds(delayTime);
+
+        thisGun.SetActive(false);
+
+        nextGun.SetActive(true);
     }
 
     // Update is called once per frame
@@ -84,10 +115,17 @@ public class CoreGunScript : MonoBehaviour
                 }
             }
         }
-        else if (bulletsLeft < 1 && !isReloading) 
+        else if (bulletsLeft < 1 && !isReloading && !isEmpty) 
         {
             Empty();
         }
         CurrentCooldown -= Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SwitchGun();
+        }
     }
+
+   
 }

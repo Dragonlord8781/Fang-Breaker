@@ -60781,6 +60781,9 @@ MonoBehaviour:
   magazineSize: 10
   bulletsLeft: 0
   isReloading: 0
+  thisGun: {fileID: 512704879}
+  nextGun: {fileID: 1076354073}
+  delayTime: 2
 --- !u!95 &512704884
 Animator:
   serializedVersion: 7
@@ -127269,6 +127272,9 @@ MonoBehaviour:
   magazineSize: 6
   bulletsLeft: 0
   isReloading: 0
+  thisGun: {fileID: 1076354073}
+  nextGun: {fileID: 512704879}
+  delayTime: 2
 --- !u!43 &1076954964
 Mesh:
   m_ObjectHideFlags: 0
