@@ -5,28 +5,27 @@ using System.Collections;
 
 public class CoreGunScript : MonoBehaviour
 {
-    public UnityEvent OnGunShoot; //creates OnGunShoot UnityEvent
-    public float FireCoolDown; //creates FireCoolDown float
+    //creates values 
+    public UnityEvent OnGunShoot; //unity event for gun shooting 
+    public float FireCoolDown; //the cooldown between shots
+    public bool Automatic; //determines if the gun is automatic 
+    private float CurrentCooldown; //determine what is the current cooldown time
 
-    public bool Automatic; //creates Automatic bool
+    public Animator anim; //connects animator
 
-    private float CurrentCooldown; //creates CurrentCoolDown float
+    public float reloadTime;  //the time it takes to reload
+    public int magazineSize, bulletsLeft; //the magazine size and the the bullets is left in mag
+    public bool isReloading; //determines if the gun is reloading
 
-    public Animator anim; //creates anim Animator
+    public GameObject thisGun; //connects to this gun
+    public GameObject nextGun; //connects to the next gun 
 
-    public float reloadTime;
-    public int magazineSize, bulletsLeft;
-    public bool isReloading;
+    public float delayTime; //the delay time for switching guns
 
-    public GameObject thisGun;
-    public GameObject nextGun;
-
-    public float delayTime;
-
-    private bool isEmpty;
+    private bool isEmpty; //determines if the gun is empty
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Called when the gun awakes - sets cooldown, animator, magaxine size, isEmpty, and triggers "PlayUnhoister"
     void Awake()
     {
         CurrentCooldown = FireCoolDown;
@@ -39,7 +38,7 @@ public class CoreGunScript : MonoBehaviour
 
         isEmpty = false;
     }
-
+     //Reloads the gun - reloading=true, invoke ReloadCompleted after reloadtime, triggers PlayReload animation, states the "Guns is Reloading" in debug.log
     void Reload()
     {
         isReloading = true;
@@ -47,7 +46,7 @@ public class CoreGunScript : MonoBehaviour
         anim.SetTrigger("PlayReload");
         Debug.Log("Gun is Reloading");
     }
-
+     //Calls when reload completed - sets bulletsLeft to magazineSize, reloading=false, empty=false, triggers PlayFull animation
     void ReloadCompleted()
     {
         bulletsLeft = magazineSize;
@@ -55,7 +54,7 @@ public class CoreGunScript : MonoBehaviour
         isEmpty = false;
         anim.SetTrigger("PlayFull");
     }
-
+     //Called when gun is empty - triggers PlayEmpty animation, states "Gun is Empty" in debug.log, isEmpty=true
     void Empty()
     {
         anim.SetTrigger("PlayEmpty");
@@ -63,13 +62,15 @@ public class CoreGunScript : MonoBehaviour
         isEmpty = true;
     }
 
+    //Switches gun, plays PlayHoister animation until after enough time passes to reload
     void SwitchGun()
     {
         anim.SetTrigger("PlayHoister");
 
         StartCoroutine(DelayedActionCoroutine());
     }
-
+    
+    //After delay time deacticates thisGun and activates nextGun
     private IEnumerator DelayedActionCoroutine()
     {
         yield return new WaitForSeconds(delayTime);
@@ -82,13 +83,13 @@ public class CoreGunScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading)
+        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading) //if R is pressed & there is less than a full mag, and isn't reloading - reload
         {
             Reload();
         }
-        if (bulletsLeft > 0)
+        if (bulletsLeft > 0) //if there's more bullets left than 0, shoot
         {
-            if (Automatic)
+            if (Automatic)// if automatic, then shoot with heistation
             {
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -100,7 +101,7 @@ public class CoreGunScript : MonoBehaviour
                     }
                 }
             }
-            else
+            else //if not automatic, shoot normally
             {
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -111,17 +112,17 @@ public class CoreGunScript : MonoBehaviour
                         bulletsLeft--;
                     }
 
-                    anim.SetTrigger("PlayShoot");
+                    anim.SetTrigger("PlayShoot"); 
                 }
             }
         }
-        else if (bulletsLeft < 1 && !isReloading && !isEmpty) 
+        else if (bulletsLeft < 1 && !isReloading && !isEmpty) //if there is less than 1 bullet and is not reloading nor is empty, play Empty once
         {
             Empty();
         }
         CurrentCooldown -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E)) //Switch gun when E is pressed
         {
             SwitchGun();
         }
