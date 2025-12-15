@@ -14,7 +14,7 @@ public class CoreGunScript : MonoBehaviour
     public Animator anim; //connects animator
 
     public float reloadTime;  //the time it takes to reload
-    public int magazineSize, bulletsLeft; //the magazine size and the the bullets is left in mag
+    public int magazineSize, bulletsLeft; //the magazine size and the bullets is left in mag
     public bool isReloading; //determines if the gun is reloading
 
     public GameObject thisGun; //connects to this gun
@@ -91,7 +91,7 @@ public class CoreGunScript : MonoBehaviour
         {
             if (Automatic)// if automatic, then shoot with heistation
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButton(0))
                 {
                     if (CurrentCooldown <= 0f)
                     {

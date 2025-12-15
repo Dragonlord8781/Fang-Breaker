@@ -1,7 +1,14 @@
+using Unity.Cinemachine;
+using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
+using System.Collections;
+using System.Collections.Generic;
 
-public class WendigoAiScript : MonoBehaviour
+
+public class EnemyAiScript : MonoBehaviour
 {
     public NavMeshAgent agent;
 
@@ -17,6 +24,9 @@ public class WendigoAiScript : MonoBehaviour
     //Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
+    bool playerIsInRange;
+    public float attackDamage;
+    GameObject playerTarget;
 
     //States
     public float sightRange, attackRange;
@@ -95,15 +105,18 @@ public class WendigoAiScript : MonoBehaviour
     private void AttackPlayer() //attack player
     {
         //Make sure enemy doesn't move while attacking
-        agent.SetDestination(transform.position);
+       // agent.SetDestination(transform.position);
 
-        transform.LookAt(player); //gets enemy to look at player when attacking
+        //transform.LookAt(player); //gets enemy to look at player when attacking
 
         if (!alreadyAttacked) //prevents attack spam - if alreadyattacked = false - attack and set already attack to true
         {
-            /*
-             Add attack code here
-            */
+            if (playerIsInRange)
+            {
+                OnAttackPlayer();
+                Debug.Log("Attack!");
+            }
+
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
@@ -113,4 +126,27 @@ public class WendigoAiScript : MonoBehaviour
     {
         alreadyAttacked = false;
     }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerIsInRange = true;
+            playerTarget = collision.gameObject;
+            Debug.Log("Player collided");
+        }
+        else
+        {
+            playerIsInRange = false;
+        }
+    }
+
+    void OnAttackPlayer()
+    {
+        if (playerTarget.TryGetComponent(out EntityHealthScript player))
+        {
+            player.Health -= attackDamage;
+        }
+    }     
 }
