@@ -7,6 +7,7 @@ public class EntityHealthScript : MonoBehaviour
     [SerializeField] private float StartingHealth;
     private float health;
 
+    //sets up health system
     public float Health
     {
         get

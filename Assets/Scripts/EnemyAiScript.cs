@@ -127,7 +127,7 @@ public class EnemyAiScript : MonoBehaviour
         alreadyAttacked = false;
     }
 
-
+    //If collides with the player, sets up to attack player 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -142,6 +142,7 @@ public class EnemyAiScript : MonoBehaviour
         }
     }
 
+    //Deals damage to player
     void OnAttackPlayer()
     {
         if (playerTarget.TryGetComponent(out EntityHealthScript player))

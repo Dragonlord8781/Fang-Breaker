@@ -99,6 +99,7 @@ public class CoreGunScript : MonoBehaviour
                         CurrentCooldown = FireCoolDown;
                         bulletsLeft--;
                     }
+                    anim.SetTrigger("PlayShoot");
                 }
             }
             else //if not automatic, shoot normally
