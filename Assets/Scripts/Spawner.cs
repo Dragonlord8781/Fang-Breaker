@@ -10,12 +10,16 @@ public class Spawner : MonoBehaviour
 
     public GameObject enemy;
 
+    GameObject[] enemiesInScene;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         enemiesToSpawn = 5;
 
-        spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+        spawnPoints = GameObject.FindGameObjectWithTag("SpawnPoint");
+
+        Spawn();
     }
 
     private void Spawn()
@@ -29,6 +33,22 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CountObjectsWithTag();
+
+        if (enemiesInScene.Length < 1)
+        {
+            enemiesToSpawn += 5; 
+
+            Spawn();
+        }
+    }
+
+    public int CountObjectsWithTag()
+    {
+        // Find all active GameObjects with the specified tag and return the array's length
+        GameObject[] enemiesInScene = GameObject.FindGameObjectsWithTag("Enemy");
+        return enemiesInScene.Length;
+
+        Debug.Log("Found " +  enemiesInScene.Length + " enemies left.");
     }
 }

@@ -135050,7 +135050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 731c6981199372c45a44a2acbb8a894b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
-  enemy: {fileID: 0}
+  enemy: {fileID: 5713191546854872293, guid: 6ca9a07ae75dff6408d11efe1de582b2, type: 3}
 --- !u!4 &1166841085 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
