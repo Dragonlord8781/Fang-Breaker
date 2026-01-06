@@ -47,8 +47,7 @@ public class Spawner : MonoBehaviour
     {
         // Find all active GameObjects with the specified tag and return the array's length
         GameObject[] enemiesInScene = GameObject.FindGameObjectsWithTag("Enemy");
+        Debug.Log("Found " + enemiesInScene.Length + " enemies left.");
         return enemiesInScene.Length;
-
-        Debug.Log("Found " +  enemiesInScene.Length + " enemies left.");
     }
 }
