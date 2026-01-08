@@ -24,7 +24,6 @@ public class CoreGunScript : MonoBehaviour
 
     private bool isEmpty; //determines if the gun is empty
 
-
     // Called when the gun awakes - sets cooldown, animator, magaxine size, isEmpty, and triggers "PlayUnhoister"
     void Awake()
     {
@@ -129,5 +128,22 @@ public class CoreGunScript : MonoBehaviour
         }
     }
 
-   
+    
+    private void OnDrawGizmosSelected() //if player is selected in play mode, gizmo is shown
+    {
+        //if left mouse button is clicked, gizmo is red, other wise its white
+        if (Input.GetMouseButton(0))
+        {
+            Gizmos.color = Color.red;
+        }
+        else
+        {
+            Gizmos.color = Color.white;
+        }
+
+        Gizmos.DrawLine(transform.position, transform.forward * 500f); //draws a gun foward from the gun 500 units
+
+        Debug.Log("Gizmos Active"); //lets us know the Gizmod is on
+    }
+
 }
