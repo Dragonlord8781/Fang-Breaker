@@ -35,9 +35,9 @@ public class Spawner : MonoBehaviour
     {
         CountObjectsWithTag();
 
-        if (enemiesInScene.Length < 1)
+        if (enemiesInScene.Length == 0)
         {
-            enemiesToSpawn += 5; 
+            enemiesToSpawn += 5;
 
             Spawn();
         }
@@ -46,7 +46,7 @@ public class Spawner : MonoBehaviour
     public int CountObjectsWithTag()
     {
         // Find all active GameObjects with the specified tag and return the array's length
-        GameObject[] enemiesInScene = GameObject.FindGameObjectsWithTag("Enemy");
+        enemiesInScene = GameObject.FindGameObjectsWithTag("Enemy");
         Debug.Log("Found " + enemiesInScene.Length + " enemies left.");
         return enemiesInScene.Length;
     }
