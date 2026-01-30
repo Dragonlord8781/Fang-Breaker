@@ -12,6 +12,10 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+		public bool reload;
+		public bool shoot;
+		public bool pause;
+		public bool swap;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
