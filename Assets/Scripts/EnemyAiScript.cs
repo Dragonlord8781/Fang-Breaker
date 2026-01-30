@@ -31,10 +31,16 @@ public class EnemyAiScript : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    public Animator anim;
+
     private void Awake()
     {
         player = GameObject.Find("PlayerChar").transform;
         agent = GetComponent<NavMeshAgent>();
+
+        anim = GetComponent<Animator>();
+
+        anim.SetTrigger("PlayIdle");
     }
 
     // Update is called once per frame
@@ -72,11 +78,13 @@ public class EnemyAiScript : MonoBehaviour
         }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
+        anim.SetTrigger("PlayWalk");
 
         //WalkPoint reached
         if (distanceToWalkPoint.magnitude < 1f)
         {
             walkPointSet = false;
+            anim.SetTrigger("PlayIdle");
         }
     }
 
@@ -124,6 +132,7 @@ public class EnemyAiScript : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
+        anim.SetTrigger("PlayIdle");
     }
 
     //If collides with the player, sets up to attack player 
@@ -147,6 +156,7 @@ public class EnemyAiScript : MonoBehaviour
         if (playerTarget.TryGetComponent(out EntityHealthScript player))
         {
             player.Health -= attackDamage;
+            anim.SetTrigger("PlayAttack");
         }
     }     
 }
