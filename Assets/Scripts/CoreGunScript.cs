@@ -2,6 +2,7 @@ using UnityEngine.Events;
 using UnityEngine;
 using Unity.VisualScripting;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 public class CoreGunScript : MonoBehaviour
 {

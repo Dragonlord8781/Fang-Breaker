@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6941548930734124788}
   - component: {fileID: 8732824691869724060}
   m_Layer: 0
-  m_Name: Oni
+  m_Name: Wechuge
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,6 +166,7 @@ MonoBehaviour:
   attackRange: 2.25
   playerInSightRange: 0
   playerInAttackRange: 0
+  anim: {fileID: 0}
 --- !u!114 &8732824691869724060
 MonoBehaviour:
   m_ObjectHideFlags: 0

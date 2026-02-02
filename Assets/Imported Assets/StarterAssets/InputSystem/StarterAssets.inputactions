@@ -28,7 +28,7 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "8c4abdf8-4099-493a-aa1a-129acec7c3df",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -325,7 +325,7 @@
                 {
                     "name": "",
                     "id": "63dc416b-dc72-4523-b245-aa1878b439dd",
-                    "path": "<Keyboard>/tab",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": ";KeyboardMouse",
