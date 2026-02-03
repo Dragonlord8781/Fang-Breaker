@@ -60753,6 +60753,7 @@ MonoBehaviour:
   thisGun: {fileID: 512704879}
   nextGun: {fileID: 1076354073}
   delayTime: 2
+  inputs: {fileID: 0}
 --- !u!95 &512704884
 Animator:
   serializedVersion: 7
@@ -127162,6 +127163,7 @@ MonoBehaviour:
   thisGun: {fileID: 1076354073}
   nextGun: {fileID: 512704879}
   delayTime: 2
+  inputs: {fileID: 0}
 --- !u!43 &1076954964
 Mesh:
   m_ObjectHideFlags: 0
@@ -226488,7 +226490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228376, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_NotificationBehavior
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228376, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_ActionEvents.Array.size
