@@ -48,7 +48,7 @@
                     "id": "a444ab19-bed0-4398-8ba5-f074bddd7bcb",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 },
                 {
@@ -57,7 +57,7 @@
                     "id": "46b8b3eb-844a-491f-a4ab-4f88726a1efa",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 },
                 {
@@ -66,7 +66,7 @@
                     "id": "379b55bc-d42a-46e1-ad39-8b7c0870f460",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 },
                 {
@@ -75,7 +75,7 @@
                     "id": "4676f489-85f7-4ce1-a932-691f6c7c06a0",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 }
             ],

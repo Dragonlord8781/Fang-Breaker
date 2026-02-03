@@ -47,10 +47,31 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
+
+        public void OnShoot(InputValue value)
+        {
+            ShootInput(value.isPressed);
+        }
+
+        public void OnReload(InputValue value)
+        {
+            ReloadInput(value.isPressed);
+        }
+
+        public void OnSwapWeapon(InputValue value)
+        {
+            SwapInput(value.isPressed);
+        }
+
+        public void OnPause(InputValue value)
+        {
+            PauseInput(value.isPressed);
+        } 
+
 #endif
 
 
-		public void MoveInput(Vector2 newMoveDirection)
+        public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
 		} 
@@ -69,8 +90,28 @@ namespace StarterAssets
 		{
 			sprint = newSprintState;
 		}
-		
-		private void OnApplicationFocus(bool hasFocus)
+
+        public void ShootInput(bool newShootState)
+        {
+            shoot = newShootState;
+        }
+
+        public void ReloadInput(bool newReloadState)
+        {
+            reload = newReloadState;
+        }
+
+        public void SwapInput(bool newSwapState)
+        {
+            swap = newSwapState;
+        }
+
+        public void PauseInput(bool newPauseState)
+        {
+            pause = newPauseState;
+        }
+
+        private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);
 		}

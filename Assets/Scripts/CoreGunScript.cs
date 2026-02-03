@@ -3,6 +3,7 @@ using UnityEngine;
 using Unity.VisualScripting;
 using System.Collections;
 using UnityEngine.InputSystem;
+using StarterAssets;
 
 public class CoreGunScript : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class CoreGunScript : MonoBehaviour
 
     private bool isEmpty; //determines if the gun is empty
 
+    public StarterAssetsInputs inputs;
+
     // Called when the gun awakes - sets cooldown, animator, magaxine size, isEmpty, and triggers "PlayUnhoister"
     void Awake()
     {
@@ -37,6 +40,8 @@ public class CoreGunScript : MonoBehaviour
         anim.SetTrigger("PlayUnhoister");
 
         isEmpty = false;
+
+       
     }
      //Reloads the gun - reloading=true, invoke ReloadCompleted after reloadtime, triggers PlayReload animation, states the "Guns is Reloading" in debug.log
     void Reload()
@@ -83,7 +88,7 @@ public class CoreGunScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magazineSize && !isReloading) //if R is pressed & there is less than a full mag, and isn't reloading - reload
+        if (inputs.reload && bulletsLeft < magazineSize && !isReloading) //if R is pressed & there is less than a full mag, and isn't reloading - reload
         {
             Reload();
         }
@@ -91,7 +96,7 @@ public class CoreGunScript : MonoBehaviour
         {
             if (Automatic)// if automatic, then shoot with heistation
             {
-                if (Input.GetMouseButton(0))
+                if (inputs.shoot)
                 {
                     if (CurrentCooldown <= 0f)
                     {
@@ -104,7 +109,7 @@ public class CoreGunScript : MonoBehaviour
             }
             else //if not automatic, shoot normally
             {
-                if (Input.GetMouseButtonDown(0))
+                if (inputs.shoot)
                 {
                     if (CurrentCooldown <= 0f)
                     {
@@ -123,7 +128,7 @@ public class CoreGunScript : MonoBehaviour
         }
         CurrentCooldown -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.E)) //Switch gun when E is pressed
+        if (inputs.swap) //Switch gun when E is pressed
         {
             SwitchGun();
         }
@@ -133,7 +138,7 @@ public class CoreGunScript : MonoBehaviour
     private void OnDrawGizmosSelected() //if player is selected in play mode, gizmo is shown
     {
         //if left mouse button is clicked, gizmo is red, other wise its white
-        if (Input.GetMouseButton(0))
+        if (inputs.shoot)
         {
             Gizmos.color = Color.red;
         }
