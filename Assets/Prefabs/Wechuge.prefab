@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6673007915504291963}
   - component: {fileID: 6941548930734124788}
   - component: {fileID: 8732824691869724060}
+  - component: {fileID: -1916755342559622333}
   m_Layer: 0
   m_Name: Wechuge
   m_TagString: Enemy
@@ -166,7 +167,7 @@ MonoBehaviour:
   attackRange: 2.25
   playerInSightRange: 0
   playerInAttackRange: 0
-  anim: {fileID: 0}
+  anim: {fileID: -1916755342559622333}
 --- !u!114 &8732824691869724060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,3 +181,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartingHealth: 100
+--- !u!95 &-1916755342559622333
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5401052671258598560}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3e83e619543610e498332be2a1b1578d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3228397525586085251}
   - component: {fileID: 8094856802697430384}
   - component: {fileID: 7525818538287724422}
+  - component: {fileID: -8310847516939950621}
   m_Layer: 0
   m_Name: Wendigo
   m_TagString: Enemy
@@ -179,3 +180,26 @@ MonoBehaviour:
   attackRange: 2
   playerInSightRange: 0
   playerInAttackRange: 0
+  anim: {fileID: -8310847516939950621}
+--- !u!95 &-8310847516939950621
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893076885745634044}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8174b2e2d04effc43b67bbef568e72e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
