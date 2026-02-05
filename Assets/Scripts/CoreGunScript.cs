@@ -21,6 +21,8 @@ public class CoreGunScript : MonoBehaviour
 
     public GameObject thisGun; //connects to this gun
     public GameObject nextGun; //connects to the next gun 
+    public GameObject thisReticle;
+    public GameObject nextReticle;
 
     public float delayTime; //the delay time for switching guns
 
@@ -81,8 +83,10 @@ public class CoreGunScript : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
 
         thisGun.SetActive(false);
+        thisReticle.SetActive(false);
 
         nextGun.SetActive(true);
+        nextReticle.SetActive(true);
     }
 
     // Update is called once per frame

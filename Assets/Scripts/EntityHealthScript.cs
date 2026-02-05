@@ -7,6 +7,8 @@ public class EntityHealthScript : MonoBehaviour
     [SerializeField] private float StartingHealth;
     private float health;
 
+    public int scorePoints;
+
     //sets up health system
     public float Health
     {
@@ -21,6 +23,7 @@ public class EntityHealthScript : MonoBehaviour
 
             if (health <= 0f)
             {
+                PlayerManager.Instance.AddPoints(scorePoints);
                 Destroy(gameObject);
             }
         }

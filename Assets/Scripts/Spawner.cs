@@ -19,26 +19,17 @@ public class Spawner : MonoBehaviour
 
     GameObject[] enemiesInScene;
 
-    private int randomNum;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         enemiesToSpawn = 5;
 
-        FindRanNum();
-
         spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
-        spawnPoint = spawnPoints[randomNum];
+        spawnPoint = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)];
 
         Debug.Log("Found " + spawnPoint);
 
         Spawn();
-    }
-
-    private void FindRanNum()
-    {
-        randomNum = UnityEngine.Random.Range(0, spawnPoints.Length);
     }
 
     private void ChooseEnemy()
@@ -58,9 +49,8 @@ public class Spawner : MonoBehaviour
     {
         for (int i = 0; i <= enemiesToSpawn; i++)
         {
-            FindRanNum();
 
-            spawnPoint = spawnPoints[randomNum];
+            spawnPoint = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)];
             Debug.Log("Found " + spawnPoint);
 
             ChooseEnemy();

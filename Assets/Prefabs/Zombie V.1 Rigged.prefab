@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityHealthScript
   StartingHealth: 10
+  scorePoints: 10
 --- !u!114 &961976937511258428
 MonoBehaviour:
   m_ObjectHideFlags: 0

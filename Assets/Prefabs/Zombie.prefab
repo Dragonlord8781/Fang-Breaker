@@ -92,6 +92,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &6288385220119357285
 CapsuleCollider:
@@ -151,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartingHealth: 10
+  scorePoints: 10
 --- !u!114 &6554076995602297894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,3 +181,4 @@ MonoBehaviour:
   attackRange: 1.5
   playerInSightRange: 0
   playerInAttackRange: 0
+  anim: {fileID: 0}
