@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.UI; 
 
 public class PlayerManager : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class PlayerManager : MonoBehaviour
 
     private static PlayerManager _instance;
     public static PlayerManager Instance { get {  return _instance; } }
+
+    public Slider healthSlider;
+
+    public EntityHealthScript healthScript;
 
     private void Awake()
     {
@@ -26,12 +31,16 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         scoreText.text = "Score: " + currentPoints.ToString();
+
+        healthSlider.maxValue = healthScript.Health; 
+        healthSlider.value = healthScript.Health;
     }
 
     // Update is called once per frame
     void Update()
     {
         scoreText.text = "Score: " + currentPoints.ToString();
+        healthSlider.value = healthScript.Health;
     }
 
     public void AddPoints(int pointsToAdd)
