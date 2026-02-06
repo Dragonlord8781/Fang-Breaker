@@ -15,6 +15,16 @@ public class PlayerManager : MonoBehaviour
 
     public EntityHealthScript healthScript;
 
+    private GameObject currentWeapon;
+
+    public TextMeshProUGUI weaponName;
+    public TextMeshProUGUI ammoCount;
+
+    private int currentAmmoCount;
+    private int totalAmmoCount;
+
+    private CoreGunScript weaponInfo;
+
     private void Awake()
     {
         if(_instance != null && _instance != this)
@@ -34,6 +44,8 @@ public class PlayerManager : MonoBehaviour
 
         healthSlider.maxValue = healthScript.Health; 
         healthSlider.value = healthScript.Health;
+
+        WeaponUI();
     }
 
     // Update is called once per frame
@@ -41,6 +53,8 @@ public class PlayerManager : MonoBehaviour
     {
         scoreText.text = "Score: " + currentPoints.ToString();
         healthSlider.value = healthScript.Health;
+
+        WeaponUI();
     }
 
     public void AddPoints(int pointsToAdd)
@@ -51,5 +65,19 @@ public class PlayerManager : MonoBehaviour
     internal static void AddPoints()
     {
         throw new NotImplementedException();
+    }
+
+    void WeaponUI()
+    {
+        currentWeapon = GameObject.FindGameObjectWithTag("Weapon");
+
+        weaponInfo = currentWeapon.GetComponent<CoreGunScript>();
+
+        weaponName.text = currentWeapon.name;
+
+        currentAmmoCount = weaponInfo.bulletsLeft;
+        totalAmmoCount = weaponInfo.magazineSize;
+
+        ammoCount.text = currentAmmoCount + "/" + totalAmmoCount;
     }
 }
