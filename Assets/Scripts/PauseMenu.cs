@@ -1,12 +1,11 @@
 using StarterAssets;
 using UnityEngine;
-using UnityEngine.Windows;
 
-public class GameManager : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
-
     public GameObject pauseMenuUi;
-    private bool gameIsPaused = false; 
+    private bool gameIsPaused = false;
+
     public StarterAssetsInputs inputs;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,7 +19,14 @@ public class GameManager : MonoBehaviour
     {
         if (inputs.pause)
         {
-            
+            if (gameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
         }
     }
 
