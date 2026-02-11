@@ -1,12 +1,13 @@
 using StarterAssets;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Windows;
 
 public class GameManager : MonoBehaviour
 {
 
     public GameObject pauseMenuUi;
-    private bool gameIsPaused = false; 
+    public bool gameIsPaused = false; 
     public StarterAssetsInputs inputs;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,10 +19,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inputs.pause)
-        {
-            
-        }
+       
     }
 
     public void Resume()
@@ -31,7 +29,7 @@ public class GameManager : MonoBehaviour
         gameIsPaused = false;
     }
 
-    void Pause()
+    public void Pause()
     {
         pauseMenuUi.SetActive(true);
         Time.timeScale = 0f;

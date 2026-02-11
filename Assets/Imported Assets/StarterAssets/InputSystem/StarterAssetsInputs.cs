@@ -24,15 +24,18 @@ namespace StarterAssets
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
+		public GameManager manager;
+
 #if ENABLE_INPUT_SYSTEM
 		public void OnMove(InputValue value)
 		{
-			MoveInput(value.Get<Vector2>());
+			if (manager.gameIsPaused == false)
+				MoveInput(value.Get<Vector2>());
 		}
 
 		public void OnLook(InputValue value)
 		{
-			if(cursorInputForLook)
+			if(cursorInputForLook && manager.gameIsPaused == false)
 			{
 				LookInput(value.Get<Vector2>());
 			}
@@ -40,27 +43,32 @@ namespace StarterAssets
 
 		public void OnJump(InputValue value)
 		{
-			JumpInput(value.isPressed);
+            if (manager.gameIsPaused == false)
+                JumpInput(value.isPressed);
 		}
 
 		public void OnSprint(InputValue value)
 		{
-			SprintInput(value.isPressed);
+            if (manager.gameIsPaused == false)
+                SprintInput(value.isPressed);
 		}
 
         public void OnShoot(InputValue value)
         {
-            ShootInput(value.isPressed);
+            if (manager.gameIsPaused == false)
+                ShootInput(value.isPressed);
         }
 
         public void OnReload(InputValue value)
         {
-            ReloadInput(value.isPressed);
+            if (manager.gameIsPaused == false)
+                ReloadInput(value.isPressed);
         }
 
         public void OnSwapWeapon(InputValue value)
         {
-            SwapInput(value.isPressed);
+            if (manager.gameIsPaused == false)
+                SwapInput(value.isPressed);
         }
 
         public void OnPause(InputValue value)
@@ -73,52 +81,71 @@ namespace StarterAssets
 
         public void MoveInput(Vector2 newMoveDirection)
 		{
-			move = newMoveDirection;
+            if (manager.gameIsPaused == false)
+                move = newMoveDirection;
 		} 
 
 		public void LookInput(Vector2 newLookDirection)
 		{
-			look = newLookDirection;
+            if (manager.gameIsPaused == false)
+                look = newLookDirection;
 		}
 
 		public void JumpInput(bool newJumpState)
 		{
-			jump = newJumpState;
+            if (manager.gameIsPaused == false)
+                jump = newJumpState;
 		}
 
 		public void SprintInput(bool newSprintState)
 		{
-			sprint = newSprintState;
+            if (manager.gameIsPaused == false)
+                sprint = newSprintState;
 		}
 
         public void ShootInput(bool newShootState)
         {
-            shoot = newShootState;
+            if (manager.gameIsPaused == false)
+                shoot = newShootState;
         }
 
         public void ReloadInput(bool newReloadState)
         {
-            reload = newReloadState;
+            if (manager.gameIsPaused == false)
+                reload = newReloadState;
         }
 
         public void SwapInput(bool newSwapState)
         {
-            swap = newSwapState;
+            if (manager.gameIsPaused == false)
+                swap = newSwapState;
         }
 
         public void PauseInput(bool newPauseState)
         {
-            pause = newPauseState;
+                pause = !pause;
+            if (pause)
+            {
+                SetCursorState(false);
+                manager.Pause();
+                look = Vector2.zero;
+            }
+            else
+            {
+                SetCursorState(true);
+                manager.Resume();
+            }
+
         }
 
         private void OnApplicationFocus(bool hasFocus)
 		{
-			SetCursorState(cursorLocked);
+                SetCursorState(cursorLocked);
 		}
 
 		private void SetCursorState(bool newState)
 		{
-			Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
+                Cursor.lockState = newState ? CursorLockMode.Locked : CursorLockMode.None;
 		}
 	}
 	
