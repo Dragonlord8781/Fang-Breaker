@@ -16,6 +16,8 @@ namespace StarterAssets
 		public bool shoot;
 		public bool pause;
 		public bool swap;
+        public bool click;
+        public Vector2 moveClicker;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -74,7 +76,19 @@ namespace StarterAssets
         public void OnPause(InputValue value)
         {
             PauseInput(value.isPressed);
-        } 
+        }
+
+        public void OnClick(InputValue value)
+        {
+            if (manager.gameIsPaused == true)
+                ClickInput(value.isPressed);
+        }
+
+        public void OnMoveClicker(InputValue value)
+        {
+            if (manager.gameIsPaused == true)
+                MoveClickerInput(value.Get<Vector2>());
+        }
 
 #endif
 
@@ -136,6 +150,18 @@ namespace StarterAssets
                 manager.Resume();
             }
 
+        }
+
+        public void ClickInput(bool newClickState)
+        {
+            if (manager.gameIsPaused == true)
+                click = newClickState;
+        }
+
+        public void MoveClickerInput(Vector2 newClickerDirection)
+        {
+            if (manager.gameIsPaused == true)
+                moveClicker = newClickerDirection;
         }
 
         private void OnApplicationFocus(bool hasFocus)

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EntityHealthScript : MonoBehaviour
 {
     [SerializeField] private float StartingHealth;
-    private float health;
+    public float health;
 
     public int scorePoints;
 

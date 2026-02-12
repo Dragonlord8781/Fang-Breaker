@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
 
     public GameObject pauseMenuUi;
+    public GameObject settingsMenu;
+    public GameObject infoMenu;
     public bool gameIsPaused = false; 
     public StarterAssetsInputs inputs;
 
@@ -34,5 +36,29 @@ public class GameManager : MonoBehaviour
         pauseMenuUi.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = true;
+    }
+
+    public void OpenSettings()
+    {
+        settingsMenu.SetActive(true);
+        pauseMenuUi.SetActive(false);
+    }
+
+    public void OpenInfo()
+    {
+        infoMenu.SetActive(true);
+        pauseMenuUi.SetActive(false);
+    }
+
+    public void CloseSettings()
+    {
+        settingsMenu.SetActive(false);
+        pauseMenuUi.SetActive(true);
+    }
+
+    public void CloseInfo()
+    {
+        infoMenu.SetActive(false);
+        pauseMenuUi.SetActive(true);
     }
 }
