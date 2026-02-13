@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartingHealth: 30
+  health: 0
   scorePoints: 35
 --- !u!114 &7525818538287724422
 MonoBehaviour:
@@ -176,7 +177,7 @@ MonoBehaviour:
     m_Bits: 64
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 30
-  timeBetweenAttacks: 0.25
+  timeBetweenAttacks: 1
   attackDamage: 50
   sightRange: 30
   attackRange: 2

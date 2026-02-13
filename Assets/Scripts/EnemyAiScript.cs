@@ -23,7 +23,6 @@ public class EnemyAiScript : MonoBehaviour
     //Attacking
     public float timeBetweenAttacks;
     bool alreadyAttacked;
-    bool playerIsInRange;
     public float attackDamage;
     GameObject playerTarget;
 
@@ -118,13 +117,14 @@ public class EnemyAiScript : MonoBehaviour
 
         if (!alreadyAttacked) //prevents attack spam - if alreadyattacked = false - attack and set already attack to true
         {
-            if (playerIsInRange)
+            if (playerInAttackRange)
             {
                 OnAttackPlayer();
                 Debug.Log("Attack!");
+                alreadyAttacked = true;
             }
 
-            alreadyAttacked = true;
+
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
@@ -135,27 +135,14 @@ public class EnemyAiScript : MonoBehaviour
         anim.SetTrigger("PlayIdle");
     }
 
-    //If collides with the player, sets up to attack player 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            playerIsInRange = true;
-            playerTarget = collision.gameObject;
-            Debug.Log("Player collided");
-        }
-        else
-        {
-            playerIsInRange = false;
-        }
-    }
+   
 
     //Deals damage to player
     void OnAttackPlayer()
     {
-        if (playerTarget.TryGetComponent(out EntityHealthScript player))
+        if (player.TryGetComponent(out EntityHealthScript myPlayer))
         {
-            player.Health -= attackDamage;
+            myPlayer.Health -= attackDamage;
             anim.SetTrigger("PlayAttack");
         }
     }     

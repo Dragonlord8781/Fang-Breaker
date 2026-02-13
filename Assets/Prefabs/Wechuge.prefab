@@ -114,7 +114,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 0.8
   m_Height: 2.014682
   m_Direction: 1
   m_Center: {x: 0, y: 0.007337979, z: 0}
@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartingHealth: 100
+  health: 0
   scorePoints: 50
 --- !u!95 &-1916755342559622333
 Animator:

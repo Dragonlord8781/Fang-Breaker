@@ -19,20 +19,20 @@ public class Pickups : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (touchingPlayer)
-        {
-            AddHealth();
-        }
+       
+        
     }
      
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             touchingPlayer = true;
             player = collision.gameObject;
             Debug.Log("Touching player");
+            AddHealth();
+            Destroy(gameObject);
         }
         else
         {
@@ -45,6 +45,7 @@ public class Pickups : MonoBehaviour
         if (player.TryGetComponent(out EntityHealthScript healthScript))
         {
             healthScript.Health += healthValue;
+            Debug.Log("gave health");
           
         }
     }
