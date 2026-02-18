@@ -110006,6 +110006,7 @@ GameObject:
   m_Component:
   - component: {fileID: 961098430}
   - component: {fileID: 961098431}
+  - component: {fileID: 961098432}
   m_Layer: 7
   m_Name: AttackRadius
   m_TagString: Untagged
@@ -110051,6 +110052,20 @@ CapsuleCollider:
   m_Height: 17.214386
   m_Direction: 1
   m_Center: {x: -0.35528398, y: 8.107205, z: 0.5862382}
+--- !u!114 &961098432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961098429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1621c892fa11a8042ac58f9d9fcdc87a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlameThrowerRadius
+  burningEnemy: 0
+  Source: {fileID: 745322519}
 --- !u!43 &962222960
 Mesh:
   m_ObjectHideFlags: 0
@@ -177598,6 +177613,63 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1001 &1515844694
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 415291628115118633, guid: d171eaade1c643f458bb6efc8800928c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.263074
+      objectReference: {fileID: 0}
+    - target: {fileID: 415291628115118633, guid: d171eaade1c643f458bb6efc8800928c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.000000042605848
+      objectReference: {fileID: 0}
+    - target: {fileID: 415291628115118633, guid: d171eaade1c643f458bb6efc8800928c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.996895
+      objectReference: {fileID: 0}
+    - target: {fileID: 415291628115118633, guid: d171eaade1c643f458bb6efc8800928c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 415291628115118633, guid: d171eaade1c643f458bb6efc8800928c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 415291628115118633, guid: d171eaade1c643f458bb6efc8800928c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 415291628115118633, guid: d171eaade1c643f458bb6efc8800928c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 415291628115118633, guid: d171eaade1c643f458bb6efc8800928c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 415291628115118633, guid: d171eaade1c643f458bb6efc8800928c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 415291628115118633, guid: d171eaade1c643f458bb6efc8800928c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1047290484232196243, guid: d171eaade1c643f458bb6efc8800928c, type: 3}
+      propertyPath: m_Name
+      value: Zombie V.1 Rigged
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d171eaade1c643f458bb6efc8800928c, type: 3}
 --- !u!1 &1528717172
 GameObject:
   m_ObjectHideFlags: 0
@@ -232374,11 +232446,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.66
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.81
+      value: -16.798
       objectReference: {fileID: 0}
     - target: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_LocalRotation.w
@@ -244039,3 +244111,4 @@ SceneRoots:
   - {fileID: 650880220}
   - {fileID: 1071591811}
   - {fileID: 1655758170}
+  - {fileID: 1515844694}
