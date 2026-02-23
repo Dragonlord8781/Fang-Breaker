@@ -30,6 +30,12 @@ public class CoreGunScript : MonoBehaviour
 
     public StarterAssetsInputs inputs;
 
+    public bool isShooting;
+    public bool isShotgun;
+
+    public float pelletCount;
+    public int pelletSpread;
+
     // Called when the gun awakes - sets cooldown, animator, magaxine size, isEmpty, and triggers "PlayUnhoister"
     void Awake()
     {
@@ -42,6 +48,7 @@ public class CoreGunScript : MonoBehaviour
         anim.SetTrigger("PlayUnhoister");
 
         isEmpty = false;
+        isShooting = false;
 
        
     }
@@ -107,8 +114,13 @@ public class CoreGunScript : MonoBehaviour
                         OnGunShoot?.Invoke();
                         CurrentCooldown = FireCoolDown;
                         bulletsLeft--;
+                        isShooting = true;
                     }
                     anim.SetTrigger("PlayShoot");
+                }
+                else
+                {
+                    isShooting = false;
                 }
             }
             else //if not automatic, shoot normally
@@ -120,9 +132,14 @@ public class CoreGunScript : MonoBehaviour
                         OnGunShoot?.Invoke();
                         CurrentCooldown = FireCoolDown;
                         bulletsLeft--;
+                        isShooting = true;
                     }
 
                     anim.SetTrigger("PlayShoot"); 
+                }
+                else
+                {
+                    isShooting = false;
                 }
             }
         }

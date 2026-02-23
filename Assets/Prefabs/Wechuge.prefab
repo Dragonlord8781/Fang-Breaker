@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6941548930734124788}
   - component: {fileID: 8732824691869724060}
   - component: {fileID: -1916755342559622333}
+  - component: {fileID: -4870799817189663868}
   m_Layer: 0
   m_Name: Wechuge
   m_TagString: Enemy
@@ -169,6 +170,7 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   anim: {fileID: -1916755342559622333}
+  isArtic: 1
 --- !u!114 &8732824691869724060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,3 +208,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!54 &-4870799817189663868
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5401052671258598560}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

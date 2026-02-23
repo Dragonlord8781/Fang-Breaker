@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8094856802697430384}
   - component: {fileID: 7525818538287724422}
   - component: {fileID: -8310847516939950621}
+  - component: {fileID: 1742684814585244401}
   m_Layer: 0
   m_Name: Wendigo
   m_TagString: Enemy
@@ -184,6 +185,7 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   anim: {fileID: -8310847516939950621}
+  isArtic: 1
 --- !u!95 &-8310847516939950621
 Animator:
   serializedVersion: 7
@@ -206,3 +208,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!54 &1742684814585244401
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893076885745634044}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

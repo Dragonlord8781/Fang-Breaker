@@ -32,6 +32,8 @@ public class EnemyAiScript : MonoBehaviour
 
     public Animator anim;
 
+    public bool isArtic;
+
     private void Awake()
     {
         player = GameObject.Find("PlayerChar").transform;
