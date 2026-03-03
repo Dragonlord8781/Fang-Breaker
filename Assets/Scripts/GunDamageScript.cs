@@ -18,6 +18,9 @@ public class GunDamageScript : MonoBehaviour
 
     private Vector3 randomPosition;
 
+    public GameObject enemyHit;
+    public GameObject terrianHit;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -39,15 +42,33 @@ public class GunDamageScript : MonoBehaviour
             {
                 RandomPosition();
 
-                Ray pelletRay = new Ray(PlayerCamera.position, PlayerCamera.forward);
+                Ray pelletRay = new Ray(randomPosition, PlayerCamera.forward);
+
+                Debug.DrawRay(randomPosition, PlayerCamera.forward, Color.yellow, 2);
+
+                if (Physics.Raycast(pelletRay, out RaycastHit hitInfo, BulletRange))
+                {
+                    if (hitInfo.collider.gameObject.TryGetComponent(out EntityHealthScript enemy))
+                    {
+                        enemy.Health -= Damage;
+
+                        //Instantiate(enemyHit,, Quaternion.identity);
+                    }
+                }
             }
         }
-        Ray gunRay = new Ray(PlayerCamera.position, PlayerCamera.forward);
-        if (Physics.Raycast(gunRay, out RaycastHit hitInfo, BulletRange)) 
+        else
         {
-            if (hitInfo.collider.gameObject.TryGetComponent(out EntityHealthScript enemy))
+            Ray gunRay = new Ray(randomPosition, PlayerCamera.forward);
+
+            Debug.DrawRay(randomPosition, PlayerCamera.forward, Color.yellow, 2);
+
+            if (Physics.Raycast(gunRay, out RaycastHit hitInfo, BulletRange))
             {
-                enemy.Health -= Damage;
+                if (hitInfo.collider.gameObject.TryGetComponent(out EntityHealthScript enemy))
+                {
+                    enemy.Health -= Damage;
+                }
             }
         }
     }
@@ -58,6 +79,6 @@ public class GunDamageScript : MonoBehaviour
         ranY = Random.Range(yPosition - CoreGunScript.pelletSpread, yPosition + CoreGunScript.pelletSpread);
         ranZ = Random.Range(zPosition - CoreGunScript.pelletSpread, zPosition + CoreGunScript.pelletSpread);
 
-        //randomPosition = (ranX, ranY, ranZ);
+        randomPosition = new Vector3(ranX, ranY, ranZ);
     }
 }

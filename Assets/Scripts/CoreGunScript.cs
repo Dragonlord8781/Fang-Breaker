@@ -34,7 +34,11 @@ public class CoreGunScript : MonoBehaviour
     public bool isShotgun;
 
     public float pelletCount;
-    public int pelletSpread;
+    public float pelletSpread;
+
+    public GunDamageScript bullerShooter;
+
+    public ParticleSystem bulletCasings;
 
     // Called when the gun awakes - sets cooldown, animator, magaxine size, isEmpty, and triggers "PlayUnhoister"
     void Awake()
@@ -111,10 +115,12 @@ public class CoreGunScript : MonoBehaviour
                 {
                     if (CurrentCooldown <= 0f)
                     {
-                        OnGunShoot?.Invoke();
+                        bullerShooter.Shoot();
                         CurrentCooldown = FireCoolDown;
                         bulletsLeft--;
                         isShooting = true;
+
+                        bulletCasings.Play();
                     }
                     anim.SetTrigger("PlayShoot");
                 }
