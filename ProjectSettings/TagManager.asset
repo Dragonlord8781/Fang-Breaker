@@ -8,6 +8,7 @@ TagManager:
   - SpawnPoint
   - Enemy
   - Weapon
+  - PickupPoint
   layers:
   - Default
   - TransparentFX

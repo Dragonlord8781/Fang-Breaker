@@ -115,12 +115,14 @@ public class CoreGunScript : MonoBehaviour
                 {
                     if (CurrentCooldown <= 0f)
                     {
-                        bullerShooter.Shoot();
+                        OnGunShoot?.Invoke();
                         CurrentCooldown = FireCoolDown;
                         bulletsLeft--;
                         isShooting = true;
 
                         bulletCasings.Play();
+
+                        Debug.Log("Shot automatic");
                     }
                     anim.SetTrigger("PlayShoot");
                 }
@@ -139,6 +141,7 @@ public class CoreGunScript : MonoBehaviour
                         CurrentCooldown = FireCoolDown;
                         bulletsLeft--;
                         isShooting = true;
+                        Debug.Log("Shot Gun");
                     }
 
                     anim.SetTrigger("PlayShoot"); 
@@ -176,7 +179,6 @@ public class CoreGunScript : MonoBehaviour
 
         Gizmos.DrawLine(transform.position, transform.forward * 500f); //draws a gun foward from the gun 500 units
 
-        Debug.Log("Gizmos Active"); //lets us know the Gizmod is on
     }
 
 }

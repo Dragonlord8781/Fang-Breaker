@@ -1,8 +1,10 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UIElements;
+
 
 public class Spawner : MonoBehaviour
 {
@@ -29,6 +31,27 @@ public class Spawner : MonoBehaviour
 
     private static Spawner _instance;
     public static Spawner Instance { get { return _instance; } }
+
+    private int pickUpsToSpawn;
+
+    private GameObject pickUpPoint;
+    GameObject[] pickUpPoints;
+
+    private GameObject pickUp;
+    public GameObject pickUp1;
+
+    private Vector3 ranPickUpPointRange;
+
+    private Transform pickUpTransform;
+    private float xPosition;
+    private float yPosition;
+    private float zPosition;
+    private float ranX;
+    private float ranY;
+    private float ranZ;
+
+    public float randomSpread;
+
 
     private void Awake()
     {
@@ -59,7 +82,12 @@ public class Spawner : MonoBehaviour
 
         countText.text = enemiesLeft.ToString() + "/" + totalEnemies.ToString() + " Foes Left";
 
+        pickUpsToSpawn = 5;
+        pickUpPoints = GameObject.FindGameObjectsWithTag("PickupPoint");
+        pickUpPoint = pickUpPoints[UnityEngine.Random.Range(0, pickUpPoints.Length)];
+
         Spawn();
+
     }
 
     private void ChooseEnemy()
@@ -75,6 +103,16 @@ public class Spawner : MonoBehaviour
         enemy = enemies[UnityEngine.Random.Range(0, enemies.Count)];
     }
 
+    private void ChoosePickup()
+    {
+        List<GameObject> pickUps = new List<GameObject>
+        {
+            pickUp1
+        };
+
+        pickUp = pickUps[UnityEngine.Random.Range(0, pickUps.Count)];
+    }
+
     private void Spawn()
     {
         for (int i = 1; i <= enemiesToSpawn; i++)
@@ -87,6 +125,31 @@ public class Spawner : MonoBehaviour
 
             Instantiate(enemy, spawnPoint.transform.position, Quaternion.identity);
         }
+
+        for (int i = 1; i <= pickUpsToSpawn; i++)
+        {
+            pickUpPoint = pickUpPoints[UnityEngine.Random.Range(0,pickUpPoints.Length)];
+
+            ChoosePickup();
+            RandomPickupRange();
+
+            Instantiate(pickUp, ranPickUpPointRange, Quaternion.identity);
+        }
+    }
+
+    private void RandomPickupRange()
+    {
+        pickUpTransform = pickUpPoint.transform;
+        xPosition = pickUpTransform.position.x;
+        yPosition = pickUpTransform.position.y;
+        zPosition = pickUpTransform.position.z;
+
+        ranX = UnityEngine.Random.Range(xPosition - randomSpread, xPosition + randomSpread);
+        ranY = UnityEngine.Random.Range(yPosition - randomSpread, yPosition + randomSpread);
+        ranZ = UnityEngine.Random.Range(zPosition - randomSpread, zPosition + randomSpread);
+
+        ranPickUpPointRange = new Vector3(ranX, yPosition, ranY);
+
     }
 
     // Update is called once per frame
