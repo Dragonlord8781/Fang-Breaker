@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UIElements;
 
 
@@ -51,6 +52,8 @@ public class Spawner : MonoBehaviour
     private float ranZ;
 
     public float randomSpread;
+
+    private Vector3 pickUpLocation;
 
 
     private void Awake()
@@ -149,6 +152,7 @@ public class Spawner : MonoBehaviour
         ranZ = UnityEngine.Random.Range(zPosition - randomSpread, zPosition + randomSpread);
 
         ranPickUpPointRange = new Vector3(ranX, yPosition, ranY);
+  
 
     }
 
