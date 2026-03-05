@@ -96,7 +96,7 @@ public class GunDamageScript : MonoBehaviour
         ranY = Random.Range(yPosition - CoreGunScript.pelletSpread, yPosition + CoreGunScript.pelletSpread);
         ranZ = Random.Range(zPosition - CoreGunScript.pelletSpread, zPosition + CoreGunScript.pelletSpread);
 
-        randomPosition = new Vector3(ranX, ranY, zPosition);
+        randomPosition = new Vector3(ranX, ranY, ranZ);
 
 
     }
