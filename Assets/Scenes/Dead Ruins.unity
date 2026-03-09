@@ -26269,6 +26269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 215022112}
   - component: {fileID: 215022113}
+  - component: {fileID: 215022114}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -26308,6 +26309,18 @@ MonoBehaviour:
   infoMenu: {fileID: 838634483}
   gameIsPaused: 0
   inputs: {fileID: 2021767195}
+--- !u!114 &215022114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215022111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc0d8497971f3b14d8569b4e78697210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneSwitcher
 --- !u!1 &216067042
 GameObject:
   m_ObjectHideFlags: 0
@@ -153437,7 +153450,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1303874796}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 215022114}
+        m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1303874796
 MonoBehaviour:
   m_ObjectHideFlags: 0
