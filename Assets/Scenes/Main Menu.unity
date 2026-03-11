@@ -317,7 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   pauseMenuUi: {fileID: 1989189452}
   settingsMenu: {fileID: 778210861}
-  infoMenu: {fileID: 100000, guid: 73e3d6d0fdcfc1d4483701317ca34665, type: 3}
+  infoMenu: {fileID: 0}
   gameIsPaused: 0
   inputs: {fileID: 0}
 --- !u!1 &316304372
@@ -1684,7 +1684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.084905684, g: 0.082102194, b: 0.082102194, a: 1}
+  m_Color: {r: 0.7058824, g: 0.68235296, b: 0.6901961, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

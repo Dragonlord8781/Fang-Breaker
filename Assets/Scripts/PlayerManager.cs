@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
-    private int currentPoints;
+    public int currentPoints;
     public TextMeshProUGUI scoreText;
 
     private static PlayerManager _instance;
@@ -24,6 +24,8 @@ public class PlayerManager : MonoBehaviour
     private int totalAmmoCount;
 
     private CoreGunScript weaponInfo;
+
+ 
 
     private void Awake()
     {

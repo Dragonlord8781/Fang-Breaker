@@ -23,9 +23,9 @@ public class Spawner : MonoBehaviour
 
     GameObject[] enemiesInScene;
 
-    private int currentWaveNum;
-    private int enemiesLeft;
-    private int totalEnemies;
+    public int currentWaveNum;
+    public int enemiesLeft;
+    public int totalEnemies;
 
     public TextMeshProUGUI waveText;
     public TextMeshProUGUI countText;
@@ -55,6 +55,7 @@ public class Spawner : MonoBehaviour
 
     private Vector3 pickUpLocation;
 
+    public int allEnemies;
 
     private void Awake()
     {
