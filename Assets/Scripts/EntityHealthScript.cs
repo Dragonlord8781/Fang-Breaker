@@ -9,6 +9,9 @@ public class EntityHealthScript : MonoBehaviour
 
     public int scorePoints;
 
+    public bool isEnemy;
+    public bool isPlayer;
+
     //sets up health system
     public float Health
     {
@@ -23,7 +26,16 @@ public class EntityHealthScript : MonoBehaviour
 
             if (health <= 0f)
             {
-                PlayerManager.Instance.AddPoints(scorePoints);
+                PlayerData.Instance.AddPoints(scorePoints);
+
+                if (isEnemy)
+                {
+                    PlayerData.Instance.AddKill(1);
+                }
+                if (isPlayer)
+                {
+                    PlayerData.Instance.DeathAddUp();
+                }
                 Destroy(gameObject);
             }
         }

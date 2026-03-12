@@ -25,8 +25,6 @@ public class PlayerManager : MonoBehaviour
 
     private CoreGunScript weaponInfo;
 
- 
-
     private void Awake()
     {
         if(_instance != null && _instance != this)
@@ -36,12 +34,14 @@ public class PlayerManager : MonoBehaviour
         else
         {
             _instance = this;
+
         }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        currentPoints = PlayerData.Instance.points;
         scoreText.text = "Score: " + currentPoints.ToString();
 
         healthSlider.maxValue = healthScript.Health; 
@@ -53,20 +53,11 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentPoints = PlayerData.Instance.points;
         scoreText.text = "Score: " + currentPoints.ToString();
         healthSlider.value = healthScript.Health;
 
         WeaponUI();
-    }
-
-    public void AddPoints(int pointsToAdd)
-    {
-        currentPoints += pointsToAdd;
-    }
-
-    internal static void AddPoints()
-    {
-        throw new NotImplementedException();
     }
 
     void WeaponUI()

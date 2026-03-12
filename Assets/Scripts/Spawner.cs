@@ -56,6 +56,7 @@ public class Spawner : MonoBehaviour
     private Vector3 pickUpLocation;
 
     public int allEnemies;
+    public bool newGame = true;
 
     private void Awake()
     {
@@ -72,26 +73,27 @@ public class Spawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        enemiesToSpawn = 5;
-        totalEnemies = enemiesToSpawn;
-        enemiesLeft = totalEnemies;
+        
+            enemiesToSpawn = PlayerData.Instance.enemyCount;
+            totalEnemies = PlayerData.Instance.enemyTotal;
+            enemiesLeft = totalEnemies;
 
-        spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
-        spawnPoint = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)];
+            spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+            spawnPoint = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)];
 
-        Debug.Log("Found " + spawnPoint);
+            Debug.Log("Found " + spawnPoint);
 
-        currentWaveNum = 1;
-        waveText.text = "Wave: " + currentWaveNum.ToString();
+            currentWaveNum = 1;
+            waveText.text = "Wave: " + currentWaveNum.ToString();
 
-        countText.text = enemiesLeft.ToString() + "/" + totalEnemies.ToString() + " Foes Left";
+            countText.text = enemiesLeft.ToString() + "/" + totalEnemies.ToString() + " Foes Left";
 
-        pickUpsToSpawn = 5;
-        pickUpPoints = GameObject.FindGameObjectsWithTag("PickupPoint");
-        pickUpPoint = pickUpPoints[UnityEngine.Random.Range(0, pickUpPoints.Length)];
+            pickUpsToSpawn = 5;
+            pickUpPoints = GameObject.FindGameObjectsWithTag("PickupPoint");
+            pickUpPoint = pickUpPoints[UnityEngine.Random.Range(0, pickUpPoints.Length)];
 
-        Spawn();
-
+            Spawn();
+        
     }
 
     private void ChooseEnemy()
@@ -165,10 +167,10 @@ public class Spawner : MonoBehaviour
 
         if (enemiesInScene.Length == 0)
         {
-            enemiesToSpawn += 5;
+            PlayerData.Instance.enemyTotal += 5;
 
             currentWaveNum++;
-            totalEnemies = enemiesToSpawn;
+            totalEnemies = PlayerData.Instance.enemyTotal;
             enemiesLeft = totalEnemies;
 
             Spawn();

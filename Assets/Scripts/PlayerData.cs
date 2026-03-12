@@ -1,0 +1,107 @@
+using UnityEngine;
+using TMPro;
+using System;
+using UnityEngine.UI;
+
+public class PlayerData : MonoBehaviour
+{
+    public int points;
+    public int killCount;
+    public int enemyTotal;
+    public int enemyCount;
+    public int waveCount;
+
+    public int highScore;
+    public int highestWave;
+    public int mostEnemiesKilled;
+
+    public int totalScore;
+    public int totalWaves;
+    public int totalEnemiesKilled;
+
+    public int lastScore;
+    public int lastWave;
+    public int lastEnemies;
+    public int lastTotalEnemies;
+
+
+    private static PlayerData _instance;
+    public static PlayerData Instance { get { return _instance; } }
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+       
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void DeathAddUp()
+    {
+        ClearSave();
+        if (highScore < points)
+        {
+            highScore = points;
+        }
+        if (highestWave < waveCount - 1)
+        {
+            highestWave = waveCount - 1;
+        }
+        if (mostEnemiesKilled < killCount)
+        { 
+            mostEnemiesKilled = killCount;
+        }
+
+        totalScore += points;
+        totalWaves += waveCount - 1;
+        totalEnemiesKilled += killCount;
+    }
+
+    public void QuitAddUp()
+    {
+        lastScore = points;
+        lastWave = waveCount;
+        lastTotalEnemies = enemyTotal;
+        lastEnemies = enemyCount;
+    }
+
+    public void ClearSave()
+    {
+        lastScore = 0;
+        lastWave = 0;
+        lastTotalEnemies = 0;
+        lastEnemies = 0;
+    }
+
+    public void AddPoints(int pointsToAdd)
+    {
+        points += pointsToAdd;
+    }
+
+    internal static void AddPoints()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void AddKill(int killToAdd)
+    {
+        killCount++;
+    }
+}
