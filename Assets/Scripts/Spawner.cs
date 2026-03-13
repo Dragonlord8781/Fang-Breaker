@@ -171,6 +171,7 @@ public class Spawner : MonoBehaviour
 
             currentWaveNum++;
             totalEnemies = PlayerData.Instance.enemyTotal;
+            enemiesToSpawn = totalEnemies;
             enemiesLeft = totalEnemies;
 
             Spawn();

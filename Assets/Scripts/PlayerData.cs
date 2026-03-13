@@ -23,6 +23,7 @@ public class PlayerData : MonoBehaviour
     public int lastWave;
     public int lastEnemies;
     public int lastTotalEnemies;
+    public int lastKillCount;
 
 
     private static PlayerData _instance;
@@ -80,6 +81,26 @@ public class PlayerData : MonoBehaviour
         lastWave = waveCount;
         lastTotalEnemies = enemyTotal;
         lastEnemies = enemyCount;
+        lastKillCount = killCount;
+    }
+
+    public void StartNewGame()
+    {
+        ClearSave();
+        points = 0;
+        killCount = 0;
+        enemyTotal = 5;
+        enemyCount = 5;
+        waveCount = 1;
+    }
+
+    public void RestartOldGame()
+    {
+        points = lastScore;
+        killCount = lastKillCount;
+        enemyTotal = lastTotalEnemies;
+        enemyCount = lastEnemies;
+        waveCount = lastWave;
     }
 
     public void ClearSave()

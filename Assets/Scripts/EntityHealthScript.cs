@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EntityHealthScript : MonoBehaviour
 {
@@ -9,7 +10,6 @@ public class EntityHealthScript : MonoBehaviour
 
     public int scorePoints;
 
-    public bool isEnemy;
     public bool isPlayer;
 
     //sets up health system
@@ -26,17 +26,17 @@ public class EntityHealthScript : MonoBehaviour
 
             if (health <= 0f)
             {
-                PlayerData.Instance.AddPoints(scorePoints);
-
-                if (isEnemy)
-                {
-                    PlayerData.Instance.AddKill(1);
-                }
                 if (isPlayer)
                 {
                     PlayerData.Instance.DeathAddUp();
+                    SceneManager.LoadScene("Death Screen");
                 }
-                Destroy(gameObject);
+                else
+                {
+                    PlayerData.Instance.AddPoints(scorePoints);
+                    PlayerData.Instance.AddKill(1);
+                    Destroy(gameObject);
+                }
             }
         }
     }

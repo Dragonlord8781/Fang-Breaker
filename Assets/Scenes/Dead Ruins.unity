@@ -138517,10 +138517,15 @@ MonoBehaviour:
   enemy2: {fileID: 3858956261681465557, guid: 27dd3f2c8a6607f40ae03171d25e4933, type: 3}
   enemy3: {fileID: 1893076885745634044, guid: e8a111867f0125d46b3f7513fa9ffa22, type: 3}
   enemy4: {fileID: 5401052671258598560, guid: 68144493926b37748b6ee180b74f7784, type: 3}
+  currentWaveNum: 0
+  enemiesLeft: 0
+  totalEnemies: 0
   waveText: {fileID: 140890930}
   countText: {fileID: 158729572}
   pickUp1: {fileID: 3373214736228236344, guid: 7f979081a0220b744a42ae31c433afff, type: 3}
   randomSpread: 0.2
+  allEnemies: 0
+  newGame: 1
 --- !u!1 &1164243538
 GameObject:
   m_ObjectHideFlags: 0
@@ -153454,6 +153459,18 @@ MonoBehaviour:
       - m_Target: {fileID: 215022114}
         m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
         m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 215022113}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -232573,6 +232590,7 @@ MonoBehaviour:
   StartingHealth: 100
   health: 0
   scorePoints: 0
+  isPlayer: 1
 --- !u!114 &2021767195 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5420857361349278248, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
@@ -232596,6 +232614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a45993d7ceb0d84bab55921509eee4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
+  currentPoints: 0
   scoreText: {fileID: 554776021}
   healthSlider: {fileID: 1077249925}
   healthScript: {fileID: 2021767193}

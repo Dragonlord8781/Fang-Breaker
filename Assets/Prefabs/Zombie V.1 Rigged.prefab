@@ -131,7 +131,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityHealthScript
   StartingHealth: 10
+  health: 0
   scorePoints: 10
+  isEnemy: 1
+  isPlayer: 0
 --- !u!114 &961976937511258428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +164,7 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   anim: {fileID: 150055118854763791}
+  isArtic: 0
 --- !u!136 &-4399517993237130081
 CapsuleCollider:
   m_ObjectHideFlags: 0

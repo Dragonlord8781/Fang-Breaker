@@ -11,6 +11,10 @@ public class MainMenuManager : MonoBehaviour
     public TextMeshProUGUI totalWaveCounter;
     public TextMeshProUGUI totalEnemiesKilledCounter;
 
+    public GameObject settingMenu;
+    public GameObject creditMenu;
+    public GameObject mainMenu;
+    public GameObject infoMenu;
    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,5 +32,46 @@ public class MainMenuManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OpenSettings()
+    {
+        mainMenu.SetActive(false);
+        settingMenu.SetActive(true);
+    }
+
+    public void CloseSettings()
+    {
+        mainMenu.SetActive(true);
+        settingMenu.SetActive(false);
+    }    
+
+    public void OpenCredits()
+    {
+        mainMenu.SetActive(false);
+        creditMenu.SetActive(true);
+    }
+
+    public void CloseCredits()
+    {
+        creditMenu.SetActive(false);
+        mainMenu.SetActive(true);
+    }
+
+    public void OpenInfo()
+    {
+        mainMenu.SetActive(false);
+        infoMenu.SetActive(true);
+    }
+
+    public void CloseInfo()
+    {
+        infoMenu.SetActive(false);
+        mainMenu.SetActive(true);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

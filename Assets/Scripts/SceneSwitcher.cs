@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitcher : MonoBehaviour
 {
-    public Spawner enemyController;
 
     private static SceneSwitcher _instance;
     public static SceneSwitcher Instance { get { return _instance; } }
@@ -17,7 +16,6 @@ public class SceneSwitcher : MonoBehaviour
         else
         {
             _instance = this;
-            DontDestroyOnLoad(gameObject);
         }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,8 +32,8 @@ public class SceneSwitcher : MonoBehaviour
 
     public void StartGame()
     {
+        PlayerData.Instance.StartNewGame();
         SceneManager.LoadScene("Dead Ruins");
-        enemyController.newGame = true;
     }
 
     public void QuitGame()
@@ -46,7 +44,7 @@ public class SceneSwitcher : MonoBehaviour
 
     public void StartOldGame()
     {
+        PlayerData.Instance.RestartOldGame();
         SceneManager.LoadScene("Dead Ruins");
-        enemyController.newGame = false;
     }
 }

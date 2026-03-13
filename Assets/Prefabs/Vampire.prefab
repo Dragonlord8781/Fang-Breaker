@@ -154,7 +154,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartingHealth: 50
+  health: 0
   scorePoints: 25
+  isEnemy: 1
+  isPlayer: 0
 --- !u!114 &8481906681231186135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +187,7 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   anim: {fileID: -6648666227574316730}
+  isArtic: 0
 --- !u!54 &504145310156840872
 Rigidbody:
   m_ObjectHideFlags: 0
