@@ -15,6 +15,9 @@ public class MainMenuManager : MonoBehaviour
     public GameObject creditMenu;
     public GameObject mainMenu;
     public GameObject infoMenu;
+
+    private GameObject startButton;
+    private GameObject restartButton;
    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,6 +29,18 @@ public class MainMenuManager : MonoBehaviour
         totalScoreCounter.text = "Lifetime Score: " + PlayerData.Instance.totalScore;
         totalWaveCounter.text = "Total Waves Fought: " + PlayerData.Instance.totalWaves;
         totalEnemiesKilledCounter.text = "Total Enemies Slain: " + PlayerData.Instance.totalEnemiesKilled;
+
+        startButton = GameObject.Find("Play");
+        restartButton = GameObject.Find("ResumeButton");
+
+        if(PlayerData.Instance.isOldGame)
+        {
+            restartButton.SetActive(true);
+        }
+        else
+        {
+            restartButton.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -72,6 +87,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void QuitGame()
     {
+        PlayerData.Instance.SavePlayer();
         Application.Quit();
     }
 }

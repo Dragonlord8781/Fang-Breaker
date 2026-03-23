@@ -25,6 +25,14 @@ public class PlayerData : MonoBehaviour
     public int lastTotalEnemies;
     public int lastKillCount;
 
+    public bool isOldGame;
+    public float playerHealth;
+    public int rifleAmmo;
+    public int revolverAmmo;
+    public int shotgunAmmo;
+    public int flamerAmmo;
+
+
 
     private static PlayerData _instance;
     public static PlayerData Instance { get { return _instance; } }
@@ -45,7 +53,7 @@ public class PlayerData : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       
+        LoadPlayer();
     }
 
     // Update is called once per frame
@@ -57,6 +65,7 @@ public class PlayerData : MonoBehaviour
     public void DeathAddUp()
     {
         ClearSave();
+        isOldGame = false;
         if (highScore < points)
         {
             highScore = points;
@@ -73,6 +82,8 @@ public class PlayerData : MonoBehaviour
         totalScore += points;
         totalWaves += waveCount - 1;
         totalEnemiesKilled += killCount;
+
+        SavePlayer();
     }
 
     public void QuitAddUp()
@@ -82,6 +93,9 @@ public class PlayerData : MonoBehaviour
         lastTotalEnemies = enemyTotal;
         lastEnemies = enemyCount;
         lastKillCount = killCount;
+        isOldGame = true;
+
+        SavePlayer();
     }
 
     public void StartNewGame()
@@ -124,5 +138,38 @@ public class PlayerData : MonoBehaviour
     public void AddKill(int killToAdd)
     {
         killCount++;
+    }
+
+    public void SavePlayer()
+    {
+        SaveSystem.SavePlayer(this);
+    }
+
+    public void LoadPlayer ()
+    {
+        SaveData data = SaveSystem.LoadPlayer();
+
+        points = data.points;
+        killCount = data.killCount;
+        enemyTotal = data.enemyTotal;
+        enemyCount = data.enemyCount;
+        waveCount = data.waveCount;
+        highScore = data.highScore;
+        highestWave = data.highestWave;
+        mostEnemiesKilled = data.mostEnemiesKilled;
+        totalScore = data.totalScore;
+        totalWaves = data.totalWaves;
+        totalEnemiesKilled = data.totalEnemiesKilled;
+        lastScore = data.lastScore;
+        lastWave = data.lastWave;
+        lastEnemies = data.lastEnemies;
+        lastTotalEnemies = data.lastTotalEnemies;
+        lastKillCount = data.lastKillCount;
+        isOldGame = data.isOldGame;
+        playerHealth = data.playerHealth;
+        rifleAmmo = data.rifleAmmo;
+        revolverAmmo = data.revolverAmmo;
+        shotgunAmmo = data.shotgunAmmo;
+        flamerAmmo = data.flamerAmmo;
     }
 }
