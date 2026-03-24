@@ -83,7 +83,7 @@ public class Spawner : MonoBehaviour
 
             Debug.Log("Found " + spawnPoint);
 
-            currentWaveNum = 1;
+            currentWaveNum = PlayerData.Instance.waveCount;
             waveText.text = "Wave: " + currentWaveNum.ToString();
 
             countText.text = enemiesLeft.ToString() + "/" + totalEnemies.ToString() + " Foes Left";
@@ -170,6 +170,7 @@ public class Spawner : MonoBehaviour
             PlayerData.Instance.enemyTotal += 5;
 
             currentWaveNum++;
+            PlayerData.Instance.waveCount = currentWaveNum;
             totalEnemies = PlayerData.Instance.enemyTotal;
             enemiesToSpawn = totalEnemies;
             enemiesLeft = totalEnemies;
@@ -187,6 +188,7 @@ public class Spawner : MonoBehaviour
         enemiesInScene = GameObject.FindGameObjectsWithTag("Enemy");
         //Debug.Log("Found " + enemiesInScene.Length + " enemies left.");
         enemiesLeft = enemiesInScene.Length;
+        PlayerData.Instance.enemyCount = enemiesLeft;
         return enemiesInScene.Length;
     }
 }
