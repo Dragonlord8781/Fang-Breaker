@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class GunDamageScript : MonoBehaviour
@@ -65,7 +66,18 @@ public class GunDamageScript : MonoBehaviour
                 {
                     if (hitInfo2.collider.gameObject.TryGetComponent(out EntityHealthScript enemy))
                     {
+
                         enemy.Health -= Damage;
+                        
+                    }
+
+                    if (hitInfo2.collider.CompareTag("Enemy"))
+                    {
+                        Instantiate(enemyHit);
+                    }
+                    else
+                    {
+                        Instantiate(terrianHit);
                     }
                 }
             }
@@ -85,6 +97,15 @@ public class GunDamageScript : MonoBehaviour
                     enemy.Health -= Damage;
 
                     Debug.Log("Shot bullet at " + randomPosition);
+                }
+
+                if (hitInfo3.collider.CompareTag("Enemy"))
+                {
+                    Instantiate(enemyHit);
+                }
+                else
+                {
+                    Instantiate(terrianHit);
                 }
             }
         }

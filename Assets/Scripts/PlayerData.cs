@@ -48,6 +48,8 @@ public class PlayerData : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(gameObject);
         }
+
+        LoadPlayer();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -145,7 +147,7 @@ public class PlayerData : MonoBehaviour
         SaveSystem.SavePlayer(this);
     }
 
-    public void LoadPlayer ()
+    public void LoadPlayer()
     {
         SaveData data = SaveSystem.LoadPlayer();
 

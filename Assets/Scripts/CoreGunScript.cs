@@ -40,6 +40,7 @@ public class CoreGunScript : MonoBehaviour
 
     public ParticleSystem bulletCasings;
 
+
     // Called when the gun awakes - sets cooldown, animator, magaxine size, isEmpty, and triggers "PlayUnhoister"
     void Awake()
     {

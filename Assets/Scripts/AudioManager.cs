@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
 
     public Slider musicSlider, masterSlider;
 
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -24,7 +25,8 @@ public class AudioManager : MonoBehaviour
         {
             instance = this;
         }
-        DontDestroyOnLoad(this.gameObject);
+
+      
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,10 +35,12 @@ public class AudioManager : MonoBehaviour
         masterMixer.SetFloat("MusicVol", PreferencesManager.GetMasterVolume());
 
         if (masterSlider != null)
-            PreferencesManager.GetMasterVolume();
+            masterSlider.value = PreferencesManager.GetMasterVolume();
+
 
         if (musicSlider != null)
-            PreferencesManager.GetMusicVolume();
+            musicSlider.value = PreferencesManager.GetMusicVolume();
+
     }
 
    public void ChangeSoundVolume(float soundLevel)
