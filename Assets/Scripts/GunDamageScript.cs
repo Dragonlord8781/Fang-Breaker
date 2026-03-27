@@ -22,6 +22,8 @@ public class GunDamageScript : MonoBehaviour
     public GameObject enemyHit;
     public GameObject terrianHit;
 
+    private Vector3 hitSpot;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -68,16 +70,18 @@ public class GunDamageScript : MonoBehaviour
                     {
 
                         enemy.Health -= Damage;
-                        
+
                     }
+
+                    hitSpot = hitInfo2.point;
 
                     if (hitInfo2.collider.CompareTag("Enemy"))
                     {
-                        Instantiate(enemyHit);
+                        Instantiate(enemyHit, hitSpot, Quaternion.identity);
                     }
                     else
                     {
-                        Instantiate(terrianHit);
+                        Instantiate(terrianHit, hitSpot, Quaternion.identity);
                     }
                 }
             }

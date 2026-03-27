@@ -39,7 +39,7 @@ public class CoreGunScript : MonoBehaviour
     public GunDamageScript bullerShooter;
 
     public ParticleSystem bulletCasings;
-
+    public ParticleSystem muzzleFlash;
 
     // Called when the gun awakes - sets cooldown, animator, magaxine size, isEmpty, and triggers "PlayUnhoister"
     void Awake()
@@ -122,10 +122,12 @@ public class CoreGunScript : MonoBehaviour
                         isShooting = true;
 
                         bulletCasings.Play();
+                        muzzleFlash.Play();
 
                         Debug.Log("Shot automatic");
+                        anim.SetTrigger("PlayShoot");
                     }
-                    anim.SetTrigger("PlayShoot");
+                    
                 }
                 else
                 {
@@ -143,9 +145,10 @@ public class CoreGunScript : MonoBehaviour
                         bulletsLeft--;
                         isShooting = true;
                         Debug.Log("Shot Gun");
-                    }
 
-                    anim.SetTrigger("PlayShoot"); 
+                        muzzleFlash.Play();
+                        anim.SetTrigger("PlayShoot");
+                    }
                 }
                 else
                 {
