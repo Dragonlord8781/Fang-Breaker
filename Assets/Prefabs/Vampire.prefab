@@ -156,8 +156,8 @@ MonoBehaviour:
   StartingHealth: 50
   health: 0
   scorePoints: 25
-  isEnemy: 1
   isPlayer: 0
+  delayTime: 2
 --- !u!114 &8481906681231186135
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,9 +1,12 @@
 using NUnit.Framework;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Timeline;
 using UnityEngine.UIElements;
 
 
@@ -57,6 +60,9 @@ public class Spawner : MonoBehaviour
 
     public int allEnemies;
     public bool newGame = true;
+
+    public GameObject killMarker;
+    public float delayTime;
 
     private void Awake()
     {
@@ -165,6 +171,7 @@ public class Spawner : MonoBehaviour
         CountObjectsWithTag();
         countText.text = enemiesLeft.ToString() + "/" + totalEnemies.ToString() + " Foes Left";
 
+
         if (enemiesInScene.Length == 0)
         {
             PlayerData.Instance.enemyTotal += 5;
@@ -186,9 +193,21 @@ public class Spawner : MonoBehaviour
     {
         // Find all active GameObjects with the specified tag and return the array's length
         enemiesInScene = GameObject.FindGameObjectsWithTag("Enemy");
+        if(enemiesInScene.Length < enemiesLeft)
+        {
+            killMarker.SetActive(true);
+            StartCoroutine(DelayedActionCoroutine());
+        }
         //Debug.Log("Found " + enemiesInScene.Length + " enemies left.");
         enemiesLeft = enemiesInScene.Length;
         PlayerData.Instance.enemyCount = enemiesLeft;
         return enemiesInScene.Length;
+    }
+
+    private IEnumerator DelayedActionCoroutine()
+    {
+        yield return new WaitForSeconds(delayTime);
+
+        killMarker.SetActive(false);
     }
 }

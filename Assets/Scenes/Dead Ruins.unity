@@ -4943,6 +4943,8 @@ MonoBehaviour:
   CoreGunScript: {fileID: 50338943}
   enemyHit: {fileID: 1000010191825552, guid: 83e55d3418297934fab882559d009285, type: 3}
   terrianHit: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
+  hitMarker: {fileID: 128085961}
+  delayTime: 2
 --- !u!114 &50338943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63151,6 +63153,8 @@ MonoBehaviour:
   CoreGunScript: {fileID: 512704883}
   enemyHit: {fileID: 1000010191825552, guid: 83e55d3418297934fab882559d009285, type: 3}
   terrianHit: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
+  hitMarker: {fileID: 128085961}
+  delayTime: 2
 --- !u!114 &512704883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63180,7 +63184,7 @@ MonoBehaviour:
         m_CallState: 2
   FireCoolDown: 0.5
   Automatic: 1
-  anim: {fileID: 0}
+  anim: {fileID: 512704884}
   reloadTime: 2.5
   magazineSize: 50
   bulletsLeft: 0
@@ -83400,6 +83404,8 @@ MonoBehaviour:
   CoreGunScript: {fileID: 745322520}
   enemyHit: {fileID: 1342619648006660616, guid: ebf05d2d6a98f274a95942663439190a, type: 3}
   terrianHit: {fileID: 1342619648006660616, guid: ebf05d2d6a98f274a95942663439190a, type: 3}
+  hitMarker: {fileID: 128085961}
+  delayTime: 2
 --- !u!114 &745322520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130388,6 +130394,8 @@ MonoBehaviour:
   CoreGunScript: {fileID: 1076354076}
   enemyHit: {fileID: 1000010191825552, guid: 83e55d3418297934fab882559d009285, type: 3}
   terrianHit: {fileID: 1000010844420130, guid: 4edabb1c0dde62743b137378c7d22980, type: 3}
+  hitMarker: {fileID: 128085961}
+  delayTime: 2
 --- !u!114 &1076354076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130417,7 +130425,7 @@ MonoBehaviour:
         m_CallState: 2
   FireCoolDown: 0.5
   Automatic: 0
-  anim: {fileID: 0}
+  anim: {fileID: 1076354074}
   reloadTime: 2.5
   magazineSize: 6
   bulletsLeft: 0
@@ -138810,6 +138818,8 @@ MonoBehaviour:
   randomSpread: 0.2
   allEnemies: 0
   newGame: 1
+  killMarker: {fileID: 58618033}
+  delayTime: 2
 --- !u!4 &1166841085 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9005220659476430818, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
@@ -233222,6 +233232,7 @@ MonoBehaviour:
   health: 0
   scorePoints: 0
   isPlayer: 1
+  delayTime: 0
 --- !u!114 &2021767195 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5420857361349278248, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}

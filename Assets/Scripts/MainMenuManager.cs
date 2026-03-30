@@ -18,6 +18,9 @@ public class MainMenuManager : MonoBehaviour
 
     private GameObject startButton;
     private GameObject restartButton;
+
+    public GameObject clearMenu;
+    public GameObject blurPanel;
    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -89,5 +92,26 @@ public class MainMenuManager : MonoBehaviour
     {
         PlayerData.Instance.SavePlayer();
         Application.Quit();
+    }
+
+    public void TryClear()
+    {
+        blurPanel.SetActive(true);
+        clearMenu.SetActive(true);
+    }
+
+    public void ImSure()
+    {
+        PlayerData.Instance.ClearData();
+        blurPanel.SetActive(false);
+        clearMenu.SetActive(false);
+        settingMenu.SetActive(false);
+        mainMenu.SetActive(true);
+    }
+
+    public void NeverMind()
+    {
+        blurPanel.SetActive(false);
+        clearMenu.SetActive(false);
     }
 }

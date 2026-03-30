@@ -24,6 +24,9 @@ public class GunDamageScript : MonoBehaviour
 
     private Vector3 hitSpot;
 
+    public GameObject hitMarker;
+    public float delayTime;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -70,6 +73,8 @@ public class GunDamageScript : MonoBehaviour
                     {
 
                         enemy.Health -= Damage;
+                        hitMarker.SetActive(true);
+                        StartCoroutine(DelayedActionCoroutine());
 
                     }
 
@@ -99,6 +104,8 @@ public class GunDamageScript : MonoBehaviour
                 if (hitInfo3.collider.gameObject.TryGetComponent(out EntityHealthScript enemy))
                 {
                     enemy.Health -= Damage;
+                    hitMarker.SetActive(true);
+                    StartCoroutine(DelayedActionCoroutine());
 
                     Debug.Log("Shot bullet at " + randomPosition);
                 }
@@ -113,6 +120,13 @@ public class GunDamageScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    private IEnumerator DelayedActionCoroutine()
+    {
+        yield return new WaitForSeconds(delayTime);
+
+        hitMarker.SetActive(false);
     }
 
     public void RandomPosition()

@@ -6,7 +6,7 @@ public class Pickups : MonoBehaviour
 
     public int healthValue;
 
-    private bool touchingPlayer;
+
 
     GameObject player;
 
@@ -28,15 +28,11 @@ public class Pickups : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            touchingPlayer = true;
+ 
             player = collision.gameObject;
             Debug.Log("Touching player");
             AddHealth();
             Destroy(gameObject);
-        }
-        else
-        {
-            touchingPlayer = false;
         }
     }
 
