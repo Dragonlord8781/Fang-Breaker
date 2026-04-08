@@ -62,7 +62,14 @@ public class CoreGunScript : MonoBehaviour
     {
         isReloading = true;
         Invoke("ReloadCompleted", reloadTime);
-        anim.SetTrigger("PlayReload");
+        if (bulletsLeft == 0)
+        {
+            anim.SetTrigger("PlayReload");
+        }
+        else
+        {
+            anim.SetTrigger("PlayPartReload");
+        }
         Debug.Log("Gun is Reloading");
     }
      //Calls when reload completed - sets bulletsLeft to magazineSize, reloading=false, empty=false, triggers PlayFull animation
