@@ -61,6 +61,7 @@ public class CoreGunScript : MonoBehaviour
     void Reload()
     {
         isReloading = true;
+        anim.SetBool("PlayShootBool", false);
         Invoke("ReloadCompleted", reloadTime);
         if (bulletsLeft == 0)
         {
@@ -83,6 +84,7 @@ public class CoreGunScript : MonoBehaviour
      //Called when gun is empty - triggers PlayEmpty animation, states "Gun is Empty" in debug.log, isEmpty=true
     void Empty()
     {
+        anim.SetBool("PlayShootBool", false);
         anim.SetTrigger("PlayEmpty");
         Debug.Log("Gun is Empty");
         isEmpty = true;
@@ -133,12 +135,14 @@ public class CoreGunScript : MonoBehaviour
 
                         Debug.Log("Shot automatic");
                         anim.SetTrigger("PlayShoot");
+                        anim.SetBool("PlayShootBool", true);
                     }
                     
                 }
                 else
                 {
                     isShooting = false;
+                    anim.SetBool("PlayShootBool", false);
                 }
             }
             else //if not automatic, shoot normally

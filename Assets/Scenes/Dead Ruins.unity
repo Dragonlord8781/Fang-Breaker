@@ -42352,6 +42352,30 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[5]'
       value: 
       objectReference: {fileID: 2100000, guid: ab82ca47746b6c14db938cc03247c17f, type: 2}
+    - target: {fileID: -4063404298326131106, guid: 80663f0cceb23344eaf5163c18b545ee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6862772
+      objectReference: {fileID: 0}
+    - target: {fileID: -4063404298326131106, guid: 80663f0cceb23344eaf5163c18b545ee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.15214403
+      objectReference: {fileID: 0}
+    - target: {fileID: -4063404298326131106, guid: 80663f0cceb23344eaf5163c18b545ee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.15394272
+      objectReference: {fileID: 0}
+    - target: {fileID: -4063404298326131106, guid: 80663f0cceb23344eaf5163c18b545ee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.69439
+      objectReference: {fileID: 0}
+    - target: {fileID: -4063404298326131106, guid: 80663f0cceb23344eaf5163c18b545ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: -4063404298326131106, guid: 80663f0cceb23344eaf5163c18b545ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90.673
+      objectReference: {fileID: 0}
     - target: {fileID: -248005119892688762, guid: 80663f0cceb23344eaf5163c18b545ee, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -42359,6 +42383,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 80663f0cceb23344eaf5163c18b545ee, type: 3}
       propertyPath: m_Name
       value: HeartMelter
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 80663f0cceb23344eaf5163c18b545ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -64645,7 +64673,7 @@ MonoBehaviour:
   FireCoolDown: 0.1
   Automatic: 1
   anim: {fileID: 548887346}
-  reloadTime: 5
+  reloadTime: 6
   magazineSize: 100
   bulletsLeft: 0
   isReloading: 0
@@ -64653,7 +64681,7 @@ MonoBehaviour:
   nextGun: {fileID: 1447436981}
   thisReticle: {fileID: 1856363057}
   nextReticle: {fileID: 1228658669}
-  delayTime: 2
+  delayTime: 5
   inputs: {fileID: 2021767195}
   isShooting: 0
   isShotgun: 0
@@ -173111,7 +173139,7 @@ MonoBehaviour:
   Automatic: 1
   anim: {fileID: 1447436984}
   reloadTime: 2.5
-  magazineSize: 50
+  magazineSize: 20
   bulletsLeft: 0
   isReloading: 0
   thisGun: {fileID: 1447436981}
