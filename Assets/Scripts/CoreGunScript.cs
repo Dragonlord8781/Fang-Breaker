@@ -27,6 +27,7 @@ public class CoreGunScript : MonoBehaviour
     public float delayTime; //the delay time for switching guns
 
     private bool isEmpty; //determines if the gun is empty
+    private bool isFull;
 
     public StarterAssetsInputs inputs;
 
@@ -54,6 +55,7 @@ public class CoreGunScript : MonoBehaviour
 
         isEmpty = false;
         isShooting = false;
+        isFull = true;
 
        
     }
@@ -165,6 +167,14 @@ public class CoreGunScript : MonoBehaviour
                 {
                     isShooting = false;
                 }
+            }
+            if (bulletsLeft == magazineSize)
+            {
+                isFull = true;
+            }
+            else
+            {
+                isFull = false;
             }
         }
         else if (bulletsLeft < 1 && !isReloading && !isEmpty) //if there is less than 1 bullet and is not reloading nor is empty, play Empty once
