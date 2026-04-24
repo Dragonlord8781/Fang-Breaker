@@ -161,8 +161,6 @@ public class Spawner : MonoBehaviour
         ranZ = UnityEngine.Random.Range(zPosition - randomSpread, zPosition + randomSpread);
 
         ranPickUpPointRange = new Vector3(ranX, yPosition, ranY);
-  
-
     }
 
     // Update is called once per frame
