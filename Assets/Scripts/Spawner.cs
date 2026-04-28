@@ -20,9 +20,6 @@ public class Spawner : MonoBehaviour
     private GameObject enemy;
 
     public GameObject enemy1;
-    public GameObject enemy2;
-    public GameObject enemy3;
-    public GameObject enemy4;
 
     GameObject[] enemiesInScene;
 
@@ -36,6 +33,8 @@ public class Spawner : MonoBehaviour
     private static Spawner _instance;
     public static Spawner Instance { get { return _instance; } }
 
+    public Transform spawnerTransform;
+
     private int pickUpsToSpawn;
 
     private GameObject pickUpPoint;
@@ -45,6 +44,7 @@ public class Spawner : MonoBehaviour
     public GameObject pickUp1;
 
     private Vector3 ranPickUpPointRange;
+    private Vector3 ranSpawnPointRange;
 
     private Transform pickUpTransform;
     private float xPosition;
@@ -106,10 +106,7 @@ public class Spawner : MonoBehaviour
     {
         List<GameObject> enemies = new List<GameObject>
         {
-            enemy1,
-            enemy2,
-            enemy3,
-            enemy4
+            enemy1
         };
 
         enemy = enemies[UnityEngine.Random.Range(0, enemies.Count)];
@@ -134,8 +131,9 @@ public class Spawner : MonoBehaviour
             Debug.Log("Found " + spawnPoint);
 
             ChooseEnemy();
+            RandomSpawnerRange();
 
-            Instantiate(enemy, spawnPoint.transform.position, Quaternion.identity);
+            Instantiate(enemy, ranSpawnPointRange, Quaternion.identity);
         }
 
         for (int i = 1; i <= pickUpsToSpawn; i++)
@@ -207,5 +205,19 @@ public class Spawner : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
 
         killMarker.SetActive(false);
+    }
+
+    private void RandomSpawnerRange()
+    {
+        spawnerTransform = spawnPoint.transform;
+        xPosition = spawnerTransform.position.x;
+        yPosition = spawnerTransform.position.y;
+        zPosition = spawnerTransform.position.z;
+
+        ranX = UnityEngine.Random.Range(xPosition - randomSpread, xPosition + randomSpread);
+        ranY = UnityEngine.Random.Range(yPosition - randomSpread, yPosition + randomSpread);
+        ranZ = UnityEngine.Random.Range(zPosition - randomSpread, zPosition + randomSpread);
+
+        ranSpawnPointRange = new Vector3(ranX, yPosition, ranY);
     }
 }

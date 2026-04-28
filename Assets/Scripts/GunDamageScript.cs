@@ -19,9 +19,6 @@ public class GunDamageScript : MonoBehaviour
 
     private Vector3 randomPosition;
 
-    public GameObject enemyHit;
-    public GameObject terrianHit;
-
     private Vector3 hitSpot;
 
     public GameObject hitMarker;
@@ -43,19 +40,7 @@ public class GunDamageScript : MonoBehaviour
     public void Shoot()
     {
 
-      /*  Ray gunRay1 = new Ray(PlayerCamera.position, PlayerCamera.forward);
-
-        Debug.DrawRay(PlayerCamera.position, PlayerCamera.forward, Color.yellow, 2);
-
-        if (Physics.Raycast(gunRay1, out RaycastHit hitInfo, BulletRange))
-        {
-            if (hitInfo.collider.gameObject.TryGetComponent(out EntityHealthScript enemy))
-            {
-                enemy.Health -= Damage;
-                Debug.Log("Old Code shoots!");
-            }
-        }
-      */
+     
         if (CoreGunScript.isShotgun == true)
         {
             for (int i = 1; i <= CoreGunScript.pelletCount; i++)
@@ -80,14 +65,6 @@ public class GunDamageScript : MonoBehaviour
 
                     hitSpot = hitInfo2.point;
 
-                    if (hitInfo2.collider.CompareTag("Enemy"))
-                    {
-                        Instantiate(enemyHit, hitSpot, Quaternion.identity);
-                    }
-                    else
-                    {
-                        Instantiate(terrianHit, hitSpot, Quaternion.identity);
-                    }
                 }
             }
         }
@@ -110,14 +87,7 @@ public class GunDamageScript : MonoBehaviour
                     Debug.Log("Shot bullet at " + randomPosition);
                 }
 
-                if (hitInfo3.collider.CompareTag("Enemy"))
-                {
-                    Instantiate(enemyHit);
-                }
-                else
-                {
-                    Instantiate(terrianHit);
-                }
+              
             }
         }
     }

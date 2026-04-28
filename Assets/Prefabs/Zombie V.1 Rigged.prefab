@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2467882f559ce4fb1bd976b883b2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityHealthScript
-  StartingHealth: 10
+  StartingHealth: 50
   health: 0
   scorePoints: 10
   isPlayer: 0
