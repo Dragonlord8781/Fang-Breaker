@@ -54,4 +54,5 @@ public class EntityHealthScript : MonoBehaviour
         Health = StartingHealth;
         killMarker = GameObject.Find("KillIndicator");
     }
+
 }

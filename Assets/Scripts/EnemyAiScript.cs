@@ -34,6 +34,14 @@ public class EnemyAiScript : MonoBehaviour
 
     public bool isArtic;
 
+    public AudioSource SpawnFX;
+    public AudioSource AttackFX;
+    public AudioSource HurtFX;
+    public AudioSource IdleFX;
+    public AudioSource DeathFX;
+
+    public EntityHealthScript healthScript;
+
     private void Awake()
     {
         player = GameObject.Find("PlayerChar").transform;
@@ -42,6 +50,7 @@ public class EnemyAiScript : MonoBehaviour
         anim = GetComponent<Animator>();
 
         anim.SetTrigger("PlayIdle");
+        IdleFX.Play();
     }
 
     // Update is called once per frame
@@ -63,6 +72,8 @@ public class EnemyAiScript : MonoBehaviour
         {
             AttackPlayer();
         }
+
+        if (healthScript.)
     }
 
     //patrol player state - searches for walkPoint, moves towards it until point it rached
@@ -80,12 +91,14 @@ public class EnemyAiScript : MonoBehaviour
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
         anim.SetTrigger("PlayWalk");
+        IdleFX.Play();
 
         //WalkPoint reached
         if (distanceToWalkPoint.magnitude < 1f)
         {
             walkPointSet = false;
             anim.SetTrigger("PlayIdle");
+            IdleFX.Play();
         }
     }
 
@@ -135,6 +148,7 @@ public class EnemyAiScript : MonoBehaviour
     {
         alreadyAttacked = false;
         anim.SetTrigger("PlayIdle");
+        IdleFX.Play();
     }
 
    
@@ -146,6 +160,7 @@ public class EnemyAiScript : MonoBehaviour
         {
             myPlayer.Health -= attackDamage;
             anim.SetTrigger("PlayAttack");
+            AttackFX.Play();
         }
     }     
 }

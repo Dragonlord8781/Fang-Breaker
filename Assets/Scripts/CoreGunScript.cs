@@ -42,6 +42,11 @@ public class CoreGunScript : MonoBehaviour
     public ParticleSystem bulletCasings;
     public ParticleSystem muzzleFlash;
 
+    public AudioSource shootFX;
+    public AudioSource fullReloadFX;
+    public AudioSource halfreloadFX;
+    public AudioSource primeFX;
+
     // Called when the gun awakes - sets cooldown, animator, magaxine size, isEmpty, and triggers "PlayUnhoister"
     void Awake()
     {
@@ -52,6 +57,7 @@ public class CoreGunScript : MonoBehaviour
         bulletsLeft = magazineSize;
 
         anim.SetTrigger("PlayUnhoister");
+        primeFX.Play();
 
         isEmpty = false;
         isShooting = false;
@@ -74,10 +80,12 @@ public class CoreGunScript : MonoBehaviour
         if (bulletsLeft == 0)
         {
             anim.SetTrigger("PlayReload");
+            fullReloadFX.Play();
         }
         else
         {
             anim.SetTrigger("PlayPartReload");
+            halfreloadFX.Play();
         }
         Debug.Log("Gun is Reloading");
     }
@@ -146,6 +154,7 @@ public class CoreGunScript : MonoBehaviour
                         Debug.Log("Shot automatic");
                         anim.SetTrigger("PlayShoot");
                         anim.SetBool("PlayShootBool", true);
+                        shootFX.Play();
                     }
                     
                 }
@@ -153,6 +162,7 @@ public class CoreGunScript : MonoBehaviour
                 {
                     isShooting = false;
                     anim.SetBool("PlayShootBool", false);
+                   
                 }
             }
             else //if not automatic, shoot normally
@@ -169,11 +179,13 @@ public class CoreGunScript : MonoBehaviour
 
                         muzzleFlash.Play();
                         anim.SetTrigger("PlayShoot");
+                        shootFX.Play();
                     }
                 }
                 else
                 {
                     isShooting = false;
+               
                 }
             }
             if (bulletsLeft == magazineSize)
