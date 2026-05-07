@@ -41,6 +41,8 @@ public class EnemyAiScript : MonoBehaviour
     public AudioSource DeathFX;
 
     public EntityHealthScript healthScript;
+    private float currentHealth;
+    private float lastCurrentHealth; 
 
     private void Awake()
     {
@@ -51,11 +53,15 @@ public class EnemyAiScript : MonoBehaviour
 
         anim.SetTrigger("PlayIdle");
         IdleFX.Play();
+
+        currentHealth = healthScript.Health;
+        lastCurrentHealth = currentHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
+
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -73,7 +79,11 @@ public class EnemyAiScript : MonoBehaviour
             AttackPlayer();
         }
 
-        if (healthScript.)
+        if (lastCurrentHealth > healthScript.Health)
+        {
+            HurtFX.Play();
+            lastCurrentHealth = healthScript.Health;
+        }
     }
 
     //patrol player state - searches for walkPoint, moves towards it until point it rached

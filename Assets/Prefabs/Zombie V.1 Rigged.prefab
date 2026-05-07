@@ -830,6 +830,12 @@ MonoBehaviour:
   playerInAttackRange: 0
   anim: {fileID: 150055118854763791}
   isArtic: 0
+  SpawnFX: {fileID: 5513813519590116881}
+  AttackFX: {fileID: 7353859801720720676}
+  HurtFX: {fileID: 1151121098048415714}
+  IdleFX: {fileID: 4148660476842453069}
+  DeathFX: {fileID: 190477044998816985}
+  healthScript: {fileID: 2547065635260675993}
 --- !u!136 &-4399517993237130081
 CapsuleCollider:
   m_ObjectHideFlags: 0
