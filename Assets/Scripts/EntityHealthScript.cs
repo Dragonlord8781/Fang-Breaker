@@ -37,6 +37,7 @@ public class EntityHealthScript : MonoBehaviour
                 }
                 else
                 {
+                    GetComponent<EnemyAiScript>().PlayDeathFX();
                     PlayerData.Instance.AddPoints(scorePoints);
                     PlayerData.Instance.AddKill(1);
                     Destroy(gameObject);
@@ -53,6 +54,14 @@ public class EntityHealthScript : MonoBehaviour
     {
         Health = StartingHealth;
         killMarker = GameObject.Find("KillIndicator");
+    }
+
+    void Update()
+    {
+        if (Health > StartingHealth && Health > 0 && GetComponent<EnemyAiScript>())
+        {
+            GetComponent<EnemyAiScript>().PlayHitFX();
+        }
     }
 
 }

@@ -12,20 +12,18 @@ public class Pickups : MonoBehaviour
 
     private bool isTouchingGround;
 
+    public GameObject bodyObject;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (isTouchingGround == false)
-        {
-            Destroy(gameObject);
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-       
-       
+
+        transform.Rotate(0f, 2.5f, 0f * Time.deltaTime);
         
     }
      

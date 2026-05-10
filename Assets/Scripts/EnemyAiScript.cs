@@ -36,10 +36,11 @@ public class EnemyAiScript : MonoBehaviour
 
     public AudioSource SpawnFX;
     public AudioSource AttackFX;
-    public AudioSource HurtFX;
     public AudioSource IdleFX;
-    public AudioSource DeathFX;
 
+    public GameObject HitFX;
+    public GameObject DeathFX;
+  
     public EntityHealthScript healthScript;
     private float currentHealth;
     private float lastCurrentHealth; 
@@ -79,11 +80,6 @@ public class EnemyAiScript : MonoBehaviour
             AttackPlayer();
         }
 
-        if (lastCurrentHealth > healthScript.Health)
-        {
-            HurtFX.Play();
-            lastCurrentHealth = healthScript.Health;
-        }
     }
 
     //patrol player state - searches for walkPoint, moves towards it until point it rached
@@ -161,7 +157,15 @@ public class EnemyAiScript : MonoBehaviour
         IdleFX.Play();
     }
 
-   
+   public void PlayDeathFX()
+    {
+        Instantiate(DeathFX, this.transform.position, Quaternion.identity);
+    }
+
+    public void PlayHitFX()
+    {
+         Instantiate(HitFX, this.transform.position, Quaternion.identity);
+    }
 
     //Deals damage to player
     void OnAttackPlayer()
