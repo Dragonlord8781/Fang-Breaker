@@ -58,4 +58,29 @@ public class SaveData
         shotgunAmmo = playerData.shotgunAmmo;
         flamerAmmo = playerData.flamerAmmo;
     }
+    public SaveData()
+    {
+        points = 0;
+        killCount = 0;
+        enemyTotal = 0;
+        enemyCount = 0;
+        waveCount = 0;
+        highScore = 0;
+        highestWave = 0;
+        mostEnemiesKilled = 0;
+        totalScore = 0;
+        totalWaves = 0;
+        totalEnemiesKilled = 0;
+        lastScore = 0;
+        lastWave = 0;
+        lastEnemies = 0;
+        lastTotalEnemies = 0;
+        lastKillCount = 0;
+        isOldGame = false;
+        playerHealth = 0;
+        rifleAmmo = 0;
+        revolverAmmo = 0;
+        shotgunAmmo = 0;
+        flamerAmmo = 0;
+    }
 }

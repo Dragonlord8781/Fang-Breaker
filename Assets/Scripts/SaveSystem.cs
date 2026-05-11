@@ -7,7 +7,7 @@ public static class SaveSystem
     public static void SavePlayer (PlayerData player)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/player.ahiyasdi";
+        string path = Application.persistentDataPath + "/player.save";
         FileStream stream = new FileStream(path, FileMode.Create);
 
         SaveData data = new SaveData(player);
@@ -18,7 +18,7 @@ public static class SaveSystem
 
     public static SaveData LoadPlayer ()
     {
-        string path = Application.persistentDataPath + "/player.ahiyasdi";
+        string path = Application.persistentDataPath + "/player.save";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -31,8 +31,8 @@ public static class SaveSystem
         }
         else
         {
-            Debug.LogError("Save file not found in " + path);
-            return null;
+            SaveData data = new SaveData();
+            return data;
         }
     }
 }

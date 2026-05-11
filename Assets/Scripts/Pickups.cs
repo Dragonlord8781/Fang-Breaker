@@ -23,7 +23,7 @@ public class Pickups : MonoBehaviour
     void Update()
     {
 
-        transform.Rotate(0f, 2.5f, 0f * Time.deltaTime);
+        transform.Rotate(0f, 1.5f, 0f * Time.deltaTime);
         
     }
      
