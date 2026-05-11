@@ -136,7 +136,7 @@ public class Spawner : MonoBehaviour
             Instantiate(enemy, ranSpawnPointRange, Quaternion.identity);
         }
 
-        for (int i = 1; i <= pickUpsToSpawn; i++)
+       /* for (int i = 1; i <= pickUpsToSpawn; i++)
         {
             pickUpPoint = pickUpPoints[UnityEngine.Random.Range(0,pickUpPoints.Length)];
 
@@ -145,6 +145,7 @@ public class Spawner : MonoBehaviour
 
             Instantiate(pickUp, ranPickUpPointRange, Quaternion.identity);
         }
+       */
     }
 
     private void RandomPickupRange()

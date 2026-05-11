@@ -651,7 +651,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6433328655449035538}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.63, y: 1.3858, z: 1}
   m_ConstrainProportionsScale: 0
@@ -659,7 +659,7 @@ RectTransform:
   - {fileID: 483815219144138902}
   - {fileID: 7702995605534250355}
   m_Father: {fileID: 8086749934719686433}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 5.7}
@@ -710,9 +710,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 50
+  m_MaxValue: 25
   m_WholeNumbers: 0
-  m_Value: 50
+  m_Value: 25
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1176,10 +1176,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityHealthScript
   StartingHealth: 25
-  health: 0
+  health: 25
   scorePoints: 10
   isPlayer: 0
   delayTime: 2
+  healthPack: {fileID: 3373214736228236344, guid: 7f979081a0220b744a42ae31c433afff, type: 3}
 --- !u!114 &961976937511258428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1213,9 +1214,10 @@ MonoBehaviour:
   SpawnFX: {fileID: 5513813519590116881}
   AttackFX: {fileID: 7353859801720720676}
   IdleFX: {fileID: 4148660476842453069}
-  HitFX: {fileID: 497384226916515368, guid: 5205144791f17ae48b169dd8aeea6b81, type: 3}
-  DeathFX: {fileID: 3287499615434037404, guid: 738fc16f69727454ba4c02d644dfc727, type: 3}
+  hitFX: {fileID: 4301278380051685057}
+  deathFX: {fileID: 3999212918655770622}
   healthScript: {fileID: 2547065635260675993}
+  healthSlider: {fileID: 7845144177095830170}
 --- !u!136 &-4399517993237130081
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -16,6 +16,10 @@ public class EntityHealthScript : MonoBehaviour
     private GameObject killMarker;
     public float delayTime;
 
+    public GameObject healthPack;
+
+    public int ranNum;
+
     //sets up health system
     public float Health
     {
@@ -40,6 +44,11 @@ public class EntityHealthScript : MonoBehaviour
                     GetComponent<EnemyAiScript>().PlayDeathFX();
                     PlayerData.Instance.AddPoints(scorePoints);
                     PlayerData.Instance.AddKill(1);
+                    ranNum = Random.Range(0, 10);
+                    if(ranNum <= 1)
+                    {
+                        Instantiate(healthPack, this.transform.position, Quaternion.identity);
+                    }
                     Destroy(gameObject);
                 }
             }

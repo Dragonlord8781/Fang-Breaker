@@ -5,6 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 
 public class EnemyAiScript : MonoBehaviour
@@ -38,12 +39,14 @@ public class EnemyAiScript : MonoBehaviour
     public AudioSource AttackFX;
     public AudioSource IdleFX;
 
-    public GameObject HitFX;
-    public GameObject DeathFX;
+    public GameObject hitFX;
+    public GameObject deathFX;
   
     public EntityHealthScript healthScript;
     private float currentHealth;
-    private float lastCurrentHealth; 
+    private float lastCurrentHealth;
+
+    public Slider healthSlider;
 
     private void Awake()
     {
@@ -57,6 +60,9 @@ public class EnemyAiScript : MonoBehaviour
 
         currentHealth = healthScript.Health;
         lastCurrentHealth = currentHealth;
+
+        healthSlider.maxValue = healthScript.Health;
+        healthSlider.value = healthScript.Health;
     }
 
     // Update is called once per frame
@@ -80,6 +86,7 @@ public class EnemyAiScript : MonoBehaviour
             AttackPlayer();
         }
 
+        healthSlider.value = healthScript.Health;
     }
 
     //patrol player state - searches for walkPoint, moves towards it until point it rached
@@ -159,12 +166,12 @@ public class EnemyAiScript : MonoBehaviour
 
    public void PlayDeathFX()
     {
-        Instantiate(DeathFX, this.transform.position, Quaternion.identity);
+        Instantiate(deathFX, this.transform.position, Quaternion.identity);
     }
 
     public void PlayHitFX()
     {
-         Instantiate(HitFX, this.transform.position, Quaternion.identity);
+         Instantiate(hitFX, this.transform.position, Quaternion.identity);
     }
 
     //Deals damage to player
