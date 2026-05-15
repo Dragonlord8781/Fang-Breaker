@@ -102,7 +102,14 @@ namespace StarterAssets
 		public void LookInput(Vector2 newLookDirection)
 		{
             if (manager.gameIsPaused == false)
+            {
+#if (UNITY_IOS || UNITY_ANDROID)
+                look = newLookDirection * 50;
+#else
                 look = newLookDirection;
+#endif
+            }
+                
 		}
 
 		public void JumpInput(bool newJumpState)

@@ -27584,6 +27584,7 @@ MonoBehaviour:
   pauseMenuUi: {fileID: 174500044}
   settingsMenu: {fileID: 1757339125}
   infoMenu: {fileID: 838634483}
+  mobileUI: {fileID: 6751388636528134109}
   gameIsPaused: 0
   inputs: {fileID: 2021767195}
 --- !u!114 &215022114
