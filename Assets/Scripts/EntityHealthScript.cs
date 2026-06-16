@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Timeline;
 
 public class EntityHealthScript : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class EntityHealthScript : MonoBehaviour
     public int scorePoints;
 
     public bool isPlayer;
+
+    private GameObject killMarker;
+    public float delayTime;
 
     //sets up health system
     public float Health
@@ -41,9 +45,13 @@ public class EntityHealthScript : MonoBehaviour
         }
     }
 
+ 
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Health = StartingHealth;
+        killMarker = GameObject.Find("KillIndicator");
     }
 }

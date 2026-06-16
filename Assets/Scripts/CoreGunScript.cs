@@ -26,7 +26,8 @@ public class CoreGunScript : MonoBehaviour
 
     public float delayTime; //the delay time for switching guns
 
-    private bool isEmpty; //determines if the gun is empty
+    public bool isEmpty; //determines if the gun is empty
+    public bool isFull;
 
     public StarterAssetsInputs inputs;
 
@@ -39,6 +40,7 @@ public class CoreGunScript : MonoBehaviour
     public GunDamageScript bullerShooter;
 
     public ParticleSystem bulletCasings;
+    public ParticleSystem muzzleFlash;
 
     // Called when the gun awakes - sets cooldown, animator, magaxine size, isEmpty, and triggers "PlayUnhoister"
     void Awake()
@@ -53,6 +55,13 @@ public class CoreGunScript : MonoBehaviour
 
         isEmpty = false;
         isShooting = false;
+        isFull = true;
+
+        anim.GetBool("isEmpty");
+        anim.GetBool("isFull");
+
+        anim.SetBool("isEmpty", isEmpty);
+        anim.SetBool("isFull", isFull);
 
        
     }
@@ -60,8 +69,16 @@ public class CoreGunScript : MonoBehaviour
     void Reload()
     {
         isReloading = true;
+        anim.SetBool("PlayShootBool", false);
         Invoke("ReloadCompleted", reloadTime);
-        anim.SetTrigger("PlayReload");
+        if (bulletsLeft == 0)
+        {
+            anim.SetTrigger("PlayReload");
+        }
+        else
+        {
+            anim.SetTrigger("PlayPartReload");
+        }
         Debug.Log("Gun is Reloading");
     }
      //Calls when reload completed - sets bulletsLeft to magazineSize, reloading=false, empty=false, triggers PlayFull animation
@@ -70,14 +87,17 @@ public class CoreGunScript : MonoBehaviour
         bulletsLeft = magazineSize;
         isReloading = false;
         isEmpty = false;
+        anim.SetBool("isEmpty", isEmpty);
         anim.SetTrigger("PlayFull");
     }
      //Called when gun is empty - triggers PlayEmpty animation, states "Gun is Empty" in debug.log, isEmpty=true
     void Empty()
     {
+        anim.SetBool("PlayShootBool", false);
         anim.SetTrigger("PlayEmpty");
         Debug.Log("Gun is Empty");
         isEmpty = true;
+        anim.SetBool("isEmpty", isEmpty);
     }
 
     //Switches gun, plays PlayHoister animation until after enough time passes to reload
@@ -121,14 +141,18 @@ public class CoreGunScript : MonoBehaviour
                         isShooting = true;
 
                         bulletCasings.Play();
+                        muzzleFlash.Play();
 
                         Debug.Log("Shot automatic");
+                        anim.SetTrigger("PlayShoot");
+                        anim.SetBool("PlayShootBool", true);
                     }
-                    anim.SetTrigger("PlayShoot");
+                    
                 }
                 else
                 {
                     isShooting = false;
+                    anim.SetBool("PlayShootBool", false);
                 }
             }
             else //if not automatic, shoot normally
@@ -142,14 +166,25 @@ public class CoreGunScript : MonoBehaviour
                         bulletsLeft--;
                         isShooting = true;
                         Debug.Log("Shot Gun");
-                    }
 
-                    anim.SetTrigger("PlayShoot"); 
+                        muzzleFlash.Play();
+                        anim.SetTrigger("PlayShoot");
+                    }
                 }
                 else
                 {
                     isShooting = false;
                 }
+            }
+            if (bulletsLeft == magazineSize)
+            {
+                isFull = true;
+                anim.SetBool("isFull", isFull);
+            }
+            else
+            {
+                isFull = false;
+                anim.SetBool("isFull", isFull);
             }
         }
         else if (bulletsLeft < 1 && !isReloading && !isEmpty) //if there is less than 1 bullet and is not reloading nor is empty, play Empty once

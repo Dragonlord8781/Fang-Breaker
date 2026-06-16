@@ -6,19 +6,25 @@ public class Pickups : MonoBehaviour
 
     public int healthValue;
 
-    private bool touchingPlayer;
+
 
     GameObject player;
+
+    private bool isTouchingGround;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        if (isTouchingGround == false)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+       
        
         
     }
@@ -28,16 +34,21 @@ public class Pickups : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            touchingPlayer = true;
             player = collision.gameObject;
             Debug.Log("Touching player");
             AddHealth();
             Destroy(gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isTouchingGround = true;
+        }
         else
         {
-            touchingPlayer = false;
+            isTouchingGround= false;
         }
+        
     }
 
     public void AddHealth()

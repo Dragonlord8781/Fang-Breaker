@@ -186,8 +186,8 @@ MonoBehaviour:
   StartingHealth: 100
   health: 0
   scorePoints: 50
-  isEnemy: 1
   isPlayer: 0
+  delayTime: 2
 --- !u!95 &-1916755342559622333
 Animator:
   serializedVersion: 7
